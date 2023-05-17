@@ -1,8 +1,9 @@
 import { useState } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
-import {Room} from "@material-ui/icons"
+import { Room, Star } from "@material-ui/icons"
+import "./app.css"
 
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
 
@@ -10,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      hello
+      Chronicles Mapping App
       <ReactMapGL
         initialViewState={{
           longitude: -89.23624,
@@ -24,8 +25,33 @@ function App() {
 
         <Marker longitude={-89.23624} latitude={13.68023} anchor="bottom" >
           {/* <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_UCA_2015.jpg" width={50} height={70}/> */}
-          <Room style={{fontSize:visualViewport.zoom *10}}/>
+          <Room style={{ fontSize: visualViewport.zoom * 10, color: "red" }} />
         </Marker>
+
+        <Popup
+          latitude={13.68023}
+          longitude={-89.23624}
+          closeButton={true}
+          closeOnClick={false}
+          anchor="left" >
+          <div className="card">
+            <label>Place</label>
+            <h4 className="place">UCA El Salvador</h4>
+            <label>Review</label>
+            <p className="desc">Beautiful place. I like it</p>
+            <label>Rating</label>
+            <div className="starts">
+              <Star className="star"/>
+              <Star className="star"/>
+              <Star className="star"/>
+              <Star className="star"/>
+              <Star className="star"/>
+            </div>
+            <label>Information</label>
+            <span className="username">Created by <b>Nat Sol Paz</b></span>
+            <span className="date">1 hour ago</span>
+          </div>
+        </Popup>
 
       </ReactMapGL>
     </div>
