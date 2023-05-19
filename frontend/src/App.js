@@ -42,13 +42,6 @@ function App() {
   }
 
   const handleNewPinClick = (e) => {
-    
-    // const [lng, lat] = e.lngLat;
-    // setNewPlace({
-    //   lat,
-    //   lng,
-    // });
-
     const { lngLat } = e;
     const lat = lngLat.lat;
     const lng = lngLat.lng;
@@ -56,9 +49,6 @@ function App() {
       lat,
       lng,
     });
-
-    // console.log(e);
-    // setNewPlace(lngLat)
   };
 
   return (
@@ -145,7 +135,7 @@ function App() {
               <select>
                 <option value="1">1</option>
                 <option value="2">2</option>
-                <option selected value="3">3</option>
+                <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
