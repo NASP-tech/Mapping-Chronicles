@@ -7,7 +7,7 @@ import { Room, Star } from "@material-ui/icons"
 import "./app.css"
 import axios from "axios";
 import { format } from "timeago.js";
-// import Swal from 'sweetalert';
+import Swal from 'sweetalert';
 // import { useForm } from '../../frontend/src/hooks/useForm';
 
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
@@ -17,7 +17,7 @@ function App() {
   const [pins, setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
-  const [username, setUsername] = useState("Nat Sol");
+  const [username, setUsername] = useState(null);
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
   const [rating, setRating] = useState(null);
@@ -59,7 +59,7 @@ function App() {
 
     setLat(lat);
     setLong(lng);
-    
+
     setNewPlace({
       lat,
       lng,
@@ -126,7 +126,9 @@ function App() {
     //   });
 
     try {
-      const { data } = await axios.post(url, body);
+      const { data } = await axios.post(url, body).then(response => {
+        Swal("Success", "Pin Created!", "success")
+      });;
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -136,7 +138,16 @@ function App() {
 
   return (
     <div className="App">
-      Chronicles Mapping App
+
+
+
+
+
+
+      {/* <div>
+        <marquee>Chronicles Mapping App</marquee>
+      </div>       */}
+
       <ReactMapGL
         initialViewState={{
           longitude: -89.23624,
@@ -150,13 +161,23 @@ function App() {
         transitionDuration="200"
       >
 
+        {username ?
+          (<button className="button logout">Log Out</button>) :
+          (<div className="buttons">
+            <button className="button login">Login</button>
+            <button className="button register">Register</button>
+          </div>)}
+
         {pins.map((p) => (
           <>
             <Marker
               key={p.title}
               latitude={p.lat}
               longitude={p.long}
-              anchor="bottom" >
+              anchor="bottom"
+              offsetLeft={visualViewport.zoom * 5}
+              offsetTop={-visualViewport.zoom * 10}
+            >
               {/* <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_UCA_2015.jpg" width={50} height={70}/> */}
               <Room
                 style={{
@@ -185,11 +206,12 @@ function App() {
                   <p className="desc">{p.desc}</p>
                   <label>Rating</label>
                   <div className="starts">
+                    {/* <Star className="star" />
                     <Star className="star" />
                     <Star className="star" />
                     <Star className="star" />
-                    <Star className="star" />
-                    <Star className="star" />
+                    <Star className="star" /> */}
+                    {Array(p.rating).fill(<Star className="star" />)}
                   </div>
                   <label>Information</label>
                   <span className="username">Created by <b>{p.username}</b></span>
@@ -223,13 +245,14 @@ function App() {
                   onChange={(e) => setDesc(e.target.value)} />
                 <label>Rating</label>
                 <select
-                  onChange={(e) =>setRating(e.target.value)}
+                  onChange={(e) => setRating(e.target.value)}
                 >
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5">5</option>
+                  {/* {Array(.rating).fill(<Star className="star" />)} */}
                 </select>
                 <input
                   className="submitButton"
@@ -242,6 +265,7 @@ function App() {
         )}
 
       </ReactMapGL>
+
     </div >
   );
 }
