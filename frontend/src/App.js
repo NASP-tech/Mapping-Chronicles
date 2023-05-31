@@ -19,7 +19,7 @@ function App() {
   const [pins, setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
-  const [username, setUsername] = useState(null);
+  const [username, setUsername] = useState(myStorage.getItem("user"));
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
   const [rating, setRating] = useState(null);
@@ -93,6 +93,11 @@ function App() {
     }
   }
 
+  const handleLogout = () => {
+    myStorage.removeItem("user");
+    setUsername(null);
+  }
+
   return (
     <div className="App">
 
@@ -113,6 +118,7 @@ function App() {
           (
             <button
               className="button logout"
+              onClick={handleLogout}
             >Log Out</button>
           ) : (
             <div className="buttons">

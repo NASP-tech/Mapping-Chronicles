@@ -4,9 +4,9 @@ import {useState } from "react"
 import axios from "axios";
 import Swal from 'sweetalert';
 
-export default function Login({ setShowLogin, myStorage, setCurrentUser }) {
+export default function Login({ setShowLogin, myStorage, setUsername }) {
     const [failure, setFailure] = useState(false)
-    const [username, setUsername] = useState(null)
+    const [currentUser, setCurrentUser] = useState(null)
     const [password, setPassword] = useState(null)
 
     const handleSubmit = async (e) => {
@@ -15,7 +15,7 @@ export default function Login({ setShowLogin, myStorage, setCurrentUser }) {
         const url = 'http://localhost:5000/api/users/login'
 
         const user = {
-            "username": username,
+            "username": currentUser,
             "password": password
         };
 
@@ -24,7 +24,7 @@ export default function Login({ setShowLogin, myStorage, setCurrentUser }) {
                 Swal("Success", "User Logged!", "success")
             })
             myStorage.setItem("user", data.username)
-            setCurrentUser(data.username)
+            setUsername(data.username)
             setShowLogin(false)
             setFailure(false)
             
@@ -43,7 +43,7 @@ export default function Login({ setShowLogin, myStorage, setCurrentUser }) {
                 <input
                     type="text"
                     placeholder="username"
-                    onChange={(e) => setUsername(e.target.value)} />
+                    onChange={(e) => setCurrentUser(e.target.value)} />
                 <input
                     type="password"
                     placeholder="password"
