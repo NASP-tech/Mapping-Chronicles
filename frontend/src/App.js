@@ -9,6 +9,7 @@ import axios from "axios";
 import { format } from "timeago.js";
 import Swal from 'sweetalert';
 import Register from "./components/Register";
+import Login from "./components/Login";
 
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
 
@@ -22,6 +23,9 @@ function App() {
   const [rating, setRating] = useState(null);
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
+
+  const [showRegister, setShowRegister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -103,11 +107,28 @@ function App() {
       >
 
         {username ?
-          (<button className="button logout">Log Out</button>) :
-          (<div className="buttons">
-            <button className="button login">Login</button>
-            <button className="button register">Register</button>
-          </div>)}
+          (
+            <button
+              className="button logout"
+            >Log Out</button>
+          ) : (
+            <div className="buttons">
+              <button
+                className="button login"
+                onClick={() => setShowLogin(true)}
+              >Login</button>
+              <button
+                className="button register"
+                onClick = {() => setShowRegister(true)}
+              >Register</button>
+            </div>
+          )}
+          {
+            showRegister && <Register />
+          }
+          {
+            showLogin && <Login/>
+          }
 
         {pins.map((p) => (
           <>
@@ -185,7 +206,7 @@ function App() {
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
-                  <option value="5">5</option>                  
+                  <option value="5">5</option>
                 </select>
                 <input
                   className="submitButton"

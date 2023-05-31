@@ -29,4 +29,24 @@
     border-radius: 5px;
     color: white;
     background-color: slateblue;
+    cursor: pointer;
+}
+
+.registerCancel{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.success{
+    color:green;
+    font-size: 12px;
+    text-align: center;
+}
+
+.failure{
+    color: red;
+    font-size: 12px;
+    text-align: center;
 }

@@ -1,4 +1,4 @@
-import { Room } from "@material-ui/icons"
+import { Cancel, Room } from "@material-ui/icons"
 import "./register.css"
 import { useRef, useState } from "react"
 import axios from "axios";
@@ -8,10 +8,6 @@ export default function Register() {
 
     const [success, setSuccess] = useState(false)
     const [failure, setFailure] = useState(false)
-    // const nameRef = useRef()
-    // const emailRef = useRef()
-    // const passwordRef = useRef()
-
     const [username, setUsername] = useState(null)
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
@@ -34,8 +30,8 @@ export default function Register() {
             console.log(data)
             setFailure(false)
             setSuccess(true)
+            
         } catch (err) {
-            Swal("Error", "User Creation Failed!, Already register with E-mail", "error")
             setFailure(true)
             setSuccess(false)
         }
@@ -65,7 +61,20 @@ export default function Register() {
                     type="submit"
                 >Register
                 </button>
+
+                {
+                    success && (
+                        <span className="success"></span>
+                    )
+                }
+                {
+                    failure && (
+                        <span className="failure"></span>
+                    )
+                }
             </form>
+
+            <Cancel className="registerCancel" />
 
         </div>
     )
