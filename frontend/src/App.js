@@ -8,6 +8,7 @@ import "./app.css"
 import axios from "axios";
 import { format } from "timeago.js";
 import Swal from 'sweetalert';
+import Register from "./components/Register";
 // import { useForm } from '../../frontend/src/hooks/useForm';
 
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
@@ -263,7 +264,7 @@ function App() {
             </div>
           </Popup>
         )}
-
+        <Register />
       </ReactMapGL>
 
     </div >
