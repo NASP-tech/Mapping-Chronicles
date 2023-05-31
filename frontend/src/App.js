@@ -14,6 +14,8 @@ import Login from "./components/Login";
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
 
 function App() {
+  const myStorage = window.localStorage;
+
   const [pins, setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
@@ -37,8 +39,9 @@ function App() {
 
   useEffect(() => {
     const getPins = async () => {
+      const url = 'http://localhost:5000/api/pins'
       try {
-        const res = await axios.get("/pins");
+        const res = await axios.get(url);
         setPins(res.data);
         console.log(res);
       } catch (err) {
@@ -119,16 +122,20 @@ function App() {
               >Login</button>
               <button
                 className="button register"
-                onClick = {() => setShowRegister(true)}
+                onClick={() => setShowRegister(true)}
               >Register</button>
             </div>
           )}
-          {
-            showRegister && <Register />
-          }
-          {
-            showLogin && <Login/>
-          }
+        {
+          showRegister && <Register setShowRegister={setShowRegister} />
+        }
+        {
+          showLogin && <Login
+            setShowLogin={setShowLogin}
+            myStorage={myStorage}
+            setUsername={setUsername}
+          />
+        }
 
         {pins.map((p) => (
           <>
@@ -217,7 +224,6 @@ function App() {
             </div>
           </Popup>
         )}
-        <Register />
       </ReactMapGL>
 
     </div >

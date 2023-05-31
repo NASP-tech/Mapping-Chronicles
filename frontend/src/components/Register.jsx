@@ -1,10 +1,10 @@
 import { Cancel, Room } from "@material-ui/icons"
 import "./register.css"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import axios from "axios";
 import Swal from 'sweetalert';
 
-export default function Register() {
+export default function Register({setShowRegister}) {
 
     const [success, setSuccess] = useState(false)
     const [failure, setFailure] = useState(false)
@@ -27,7 +27,7 @@ export default function Register() {
             const { data } = await axios.post(url, newUser).then(response => {
                 Swal("Success", "User Created!", "success")
             });;
-            console.log(data)
+            
             setFailure(false)
             setSuccess(true)
             
@@ -74,7 +74,7 @@ export default function Register() {
                 }
             </form>
 
-            <Cancel className="registerCancel" />
+            <Cancel className="registerCancel" onClick={() => setShowRegister(false)}/>
 
         </div>
     )
