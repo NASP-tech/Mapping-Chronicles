@@ -9,12 +9,10 @@ import axios from "axios";
 import { format } from "timeago.js";
 import Swal from 'sweetalert';
 import Register from "./components/Register";
-// import { useForm } from '../../frontend/src/hooks/useForm';
 
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
 
 function App() {
-  // const currentUser = "Nat Sol"
   const [pins, setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
@@ -24,7 +22,6 @@ function App() {
   const [rating, setRating] = useState(null);
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
-
 
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -49,7 +46,6 @@ function App() {
 
   const handleMarkerClick = (id, lat, lng) => {
     setCurrentPlaceId(id);
-    // console.log(id);
     setViewport({ ...viewport, latitude: lat, longitude: lng });
   }
 
@@ -67,50 +63,9 @@ function App() {
     });
   };
 
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const newPin = {
-  //     username: currentUser,
-  //     title,
-  //     desc,
-  //     rating,
-  //     lat: newPlace.lat,
-  //     lng: newPlace.lng
-  //   };
-  //   try {
-  //     const res = await axios.post("/pins", newPin);
-  //     setPins([...pins, res.data]);
-  //     setNewPlace(null);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  //Initial values for the form
-  // const [formValues, handleInputChange] = useForm({
-  //   username: currentUser,
-  //   title: '',
-  //   desc: '',
-  //   rating: 0,
-  //   lat: 0,
-  //   long: 0
-  // });
-
-  // // Destructuring the formValues
-  // const {
-  //   username,
-  //   title,
-  //   desc,
-  //   rating,
-  //   lat,
-  //   long
-  // } = formValues;
-
   const handleClick = async (e) => {
     e.preventDefault();
     const url = 'http://localhost:5000/api/pins';
-
 
     const body = {
       "username": username,
@@ -120,11 +75,6 @@ function App() {
       "lat": lat,
       "long": long
     };
-
-    // axios.post(url, body)
-    //   .then(response => {
-    //     Swal("Success", "Pin Created!", "success")
-    //   });
 
     try {
       const { data } = await axios.post(url, body).then(response => {
@@ -136,18 +86,8 @@ function App() {
     }
   }
 
-
   return (
     <div className="App">
-
-
-
-
-
-
-      {/* <div>
-        <marquee>Chronicles Mapping App</marquee>
-      </div>       */}
 
       <ReactMapGL
         initialViewState={{
@@ -179,7 +119,6 @@ function App() {
               offsetLeft={visualViewport.zoom * 5}
               offsetTop={-visualViewport.zoom * 10}
             >
-              {/* <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Logo_UCA_2015.jpg" width={50} height={70}/> */}
               <Room
                 style={{
                   fontSize: visualViewport.zoom * 10,
@@ -207,11 +146,6 @@ function App() {
                   <p className="desc">{p.desc}</p>
                   <label>Rating</label>
                   <div className="starts">
-                    {/* <Star className="star" />
-                    <Star className="star" />
-                    <Star className="star" />
-                    <Star className="star" />
-                    <Star className="star" /> */}
                     {Array(p.rating).fill(<Star className="star" />)}
                   </div>
                   <label>Information</label>
@@ -232,7 +166,6 @@ function App() {
             closeOnClick={false}
             anchor="left"
             onClose={() => setNewPlace(null)}
-          // key={newPlace.lat + newPlace.lng}
           >
             <div>
               <form onSubmit={(e) => handleClick(e)}>
@@ -252,8 +185,7 @@ function App() {
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
-                  <option value="5">5</option>
-                  {/* {Array(.rating).fill(<Star className="star" />)} */}
+                  <option value="5">5</option>                  
                 </select>
                 <input
                   className="submitButton"
