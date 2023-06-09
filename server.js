@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 // handle uncaught exceptions
 process.on('uncaughtException', (err) => { // i.e database connection errors
     console.log(err.name, err.message);
-    console.log('uncaughtException, shutting down')
+    console.log('uncaughtException, shutting down');
     process.exit(1);
 });
 
@@ -21,15 +21,15 @@ mongoose.connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 }).then(() => {
-    console.log('DB connection made successfully')
-})
+    console.log('DB connection made successfully');
+});
 
 /* start server's listener */
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-    console.log(`app running on port ${port}`)
+    console.log(`app running on port ${port}`);
 });
 
 process.on('unhandledRejection', (err) => { // i.e database connection errors

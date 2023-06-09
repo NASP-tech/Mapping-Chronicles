@@ -1,17 +1,16 @@
 /* express configuration */
 const express = require('express');
 const morgan = require('morgan'); // middleware
-const rateLimit = require('express-rate-limit');
+//const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+//const hpp = require('hpp');
 
 // custom error handler
 const AppError = require('./utils/appError');
 
 const globalErrorHandler = require('./controllers/errorController');
-
-const xss = require('xss-clean');
-const hpp = require('hpp');
 
 const app = express();
 
@@ -30,8 +29,6 @@ app.use(mongoSanitize());
 app.use(express.static(`${__dirname}/public`)); // public serves a root directory so 'public' is not needed on the urls
 
 // mount routes here
-
-
 
 // handle unhandled endpoints
 app.all('*', (req, res, next) => {
