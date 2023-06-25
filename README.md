@@ -32,8 +32,8 @@ La aplicación Chronicles Maps ofrece los siguientes beneficios:
 
 Antes de comenzar con la instalación de Chronicles Maps, asegúrate de tener los siguientes requisitos previos:
 
-Node.js (versión X.X.X): Puedes descargar e instalar Node.js desde https://nodejs.org.
-MongoDB (versión X.X.X): Puedes obtener MongoDB desde https://www.mongodb.com e instalarlo según las instrucciones proporcionadas en su sitio web.
+- Node.js (versión X.X.X): Puedes descargar e instalar Node.js desde https://nodejs.org.
+- MongoDB (versión X.X.X): Puedes obtener MongoDB desde https://www.mongodb.com e instalarlo según las instrucciones proporcionadas en su sitio web.
 
 ### Inicio rápido
 
