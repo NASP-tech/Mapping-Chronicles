@@ -32,8 +32,8 @@ La aplicación Chronicles Maps ofrece los siguientes beneficios:
 
 Antes de comenzar con la instalación de Chronicles Maps, asegúrate de tener los siguientes requisitos previos:
 
-- Node.js (versión X.X.X): Puedes descargar e instalar Node.js desde https://nodejs.org.
-- MongoDB (versión X.X.X): Puedes obtener MongoDB desde https://www.mongodb.com e instalarlo según las instrucciones proporcionadas en su sitio web.
+- Node.js (versión 18.2.0): Puedes descargar e instalar Node.js desde https://nodejs.org.
+- MongoDB (versión 7.1.0): Puedes obtener MongoDB desde https://www.mongodb.com e instalarlo según las instrucciones proporcionadas en su sitio web.
 
 ### Inicio rápido
 
@@ -51,7 +51,7 @@ Para comenzar rápidamente con Chronicles Maps, sigue estos pasos:
    cd Mapping-Chronicles
    ```
 
-3. ***Instala las dependencias del proyecto utilizando npm**
+3. **Instala las dependencias del proyecto utilizando npm**
 
    ```bash
    npm install
@@ -88,7 +88,7 @@ Para comenzar rápidamente con Chronicles Maps, sigue estos pasos:
 
 ## Licencia
 
-El proyecto Chronicles Maps se distribuye bajo la licencia MIT. Consulte el archivo `LICENSE` para obtener más información.
+El proyecto Chronicles Maps se distribuye bajo la licencia ____. Consulte el archivo `LICENSE` para obtener más información.
 
 ## Contribución
 
