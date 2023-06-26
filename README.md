@@ -46,10 +46,14 @@ Para comenzar rápidamente con Chronicles Maps, sigue estos pasos:
     git clone https://github.com/NASP-tech/Mapping-Chronicles.git
     ```
 2. Instala las dependencias del proyecto:
-
-    ```bash
-    cd Mapping-Chronicles
-    npm install
+  
+    ```bash, ingresar respectivament a cada uno de las carpetas:
+    cd frontend
+    cd backend
+    ```
+    
+    ```
+    yarn install
     ```
 3. Inicia el servidor de MongoDB:
 
@@ -59,7 +63,7 @@ Para comenzar rápidamente con Chronicles Maps, sigue estos pasos:
 4. Inicia el servidor de Chronicles Maps:
 
     ```bash
-    npm start
+    yarn start
     ```
 5. Abre tu navegador web y accede a la dirección `http://localhost:3000` para ver Chronicles Maps en funcionamiento.
 
