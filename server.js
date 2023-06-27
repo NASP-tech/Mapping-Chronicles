@@ -8,7 +8,7 @@ process.on('uncaughtException', (err) => { // i.e database connection errors
     process.exit(1);
 });
 
-dotenv.config({ path: './config.env' }) // use my defined enviroment variables. needs to be prior invoking the app  file so it can be loaded correctly
+dotenv.config({ path: './config.env' }); // use my defined enviroment variables. needs to be prior invoking the app  file so it can be loaded correctly
 const app = require('./app');
 
 const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD); // replace the password into the connection string
@@ -18,10 +18,10 @@ console.log(DB);
 // database connection
 mongoose.connect(DB, {
     // options to deal with some deprecation warnings
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
+    //useNewUrlParser: true,
+    //useCreateIndex: true,
+    //useFindAndModify: false,
+    //useUnifiedTopology: true,
 }).then(() => {
     console.log('DB connection made successfully');
 });
