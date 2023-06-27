@@ -1,6 +1,6 @@
 class AppError extends Error {
     constructor(message, statusCode) {
-        super(message) // call parent constructor
+        super(message); // call parent constructor
 
         this.statusCode = statusCode;
         //operational errors, not programming errors
