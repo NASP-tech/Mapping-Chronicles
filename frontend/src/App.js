@@ -10,7 +10,13 @@ import { format } from "timeago.js";
 import Swal from 'sweetalert';
 import Register from "./components/Register";
 import Login from "./components/Login";
-
+import EntradasUCALayer from "./components/layers/EntradasUCALayer";
+import BufferEntradasUCALayer from "./components/layers/BufferEntradasUCA";
+import RutasPrimarias from "./components/layers/RutasPrimarias";
+import ParadasPrimarias from "./components/layers/ParadasPrimarias";
+import LocationComponent from "./components/LocationComponent";
+import DinamicBuffer from "./components/DinamicBuffer";
+import MyBusStops from "./components/MyBusStops";
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
 
 function App() {
@@ -98,6 +104,11 @@ function App() {
     setUsername(null);
   }
 
+
+  // <>
+
+  const [ coords, setCoords ] = useState({ lat: 0, lng: 0 });
+
   return (
     <div className="App">
 
@@ -108,12 +119,29 @@ function App() {
           zoom: 14
         }}
         style={{ width: '100vw', height: '100vh' }}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle="mapbox://styles/mapbox/dark-v10"
         mapboxAccessToken={REACT_APP_MAPBOX_TOKEN}
         onDblClick={handleNewPinClick}
         transitionDuration="200"
       >
+        <LocationComponent
+            offsetLeft={visualViewport.zoom * 5}
+            offsetTop={-visualViewport.zoom * 10} 
+            setCoords={setCoords} />
 
+
+        {/* <RutasPrimarias /> */}
+        {/* <EntradasUCALayer /> */}
+        <ParadasPrimarias />
+        {/* <BufferEntradasUCALayer /> */}
+        
+
+
+        {coords.lat !== 0 && coords.lng !== 0 && (
+          <MyBusStops coords={coords} />) }  
+
+        {coords.lat !== 0 && coords.lng !== 0 && (
+          <DinamicBuffer coords={coords} />) }  
         {username ?
           (
             <button
