@@ -13,11 +13,10 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        const url = 'http://localhost:5000/api/users/login'
+        const url = 'http://localhost:3000/api/v1/users/login'
 
         const loggedUser = {
-            "username": user,
+            "email": user,
             "password": password
         };
 
@@ -50,7 +49,7 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
             <form onSubmit={(e) => handleSubmit(e)}>
                 <input
                     type="text"
-                    placeholder="username"
+                    placeholder="Email"
                     onChange={(e) => setUser(e.target.value)} />
                 <input
                     type="password"
