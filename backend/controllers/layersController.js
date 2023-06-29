@@ -2,6 +2,9 @@ const turf = require('@turf/turf');
 const url = require('url');
 const queryString = require('querystring');
 const ParadasPrimarias = require('../models/ParadasPrimarias');
+const BufferEntradasUCA = require('../models/BufferEntradasUCA');
+const EntradasUCA = require('../models/EntradasUCA');
+const RutasPrimarias = require('../models/RutasPrimarias');
 exports.dinamicBuffer = function(req, res) {
     
     const requestUrl = req.url;
@@ -85,3 +88,42 @@ exports.getNearestBusStop = async function(req, res) {
     }
 
 
+exports.getBufferEntradasUCA = async function(req, res) {
+    try{
+        const bufferEntradasUCA = await BufferEntradasUCA.find();
+        res.status(200).json(bufferEntradasUCA);
+    }
+    catch(err){
+        res.status(500).json({ message: err });
+    }
+}
+
+
+exports.getEntradasUCA = async function(req, res) {
+    try{
+        const entradasUCA = await EntradasUCA.find();
+        res.status(200).json(entradasUCA);
+    }
+    catch(err){
+        res.status(500).json({ message: err });
+    }
+}
+
+exports.getParadasPrimarias = async function(req, res) {
+    try{
+        const paradasPrimarias = await ParadasPrimarias.find();
+        res.status(200).json(paradasPrimarias);
+    }
+    catch(err){
+        res.status(500).json({ message: err });
+    }
+}
+
+exports.getRutasPrimarias = async function(req, res) {
+    try {
+        const rutasPrimarias = await RutasPrimarias.find();
+        res.status(200).json(rutasPrimarias);
+    } catch (err) {
+        res.status(500).json({ message: err });
+    }
+}

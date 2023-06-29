@@ -30,10 +30,6 @@ mongoose.connect('mongodb://localhost:27017/chronicles',
 
 app.use("/api/pins", pinRoute);
 app.use("/api/users", userRoute);
-app.use("/api/entradasUCA", entradasUCARoute);
-app.use("/api/bufferEntradasUCA", bufferEntradasUCARoute);
-app.use("/api/rutasPrimarias", rutasPrimariasRoute);
-app.use("/api/paradasPrimarias", paradasPrimariasRoute);
 app.use("/api/layers", layerRoute);
 app.listen(5000, () => {
     console.log("Server is running on port 5000 :)");
