@@ -46,6 +46,11 @@ function App() {
         console.log(res);
       } catch (err) {
         console.log(err);
+        Swal({
+          icon: 'error',
+          title: 'Error',
+          text: 'Datos no ingresado / o ingresados incorrectamente...'
+        })
       }
     };
     getPins();
@@ -90,6 +95,11 @@ function App() {
       console.log(data);
     } catch (error) {
       console.log(error);
+      Swal({
+        icon: 'error',
+        title: 'Error',
+        text: 'Datos no ingresado / o ingresados incorrectamente...'
+      })
     }
   }
 

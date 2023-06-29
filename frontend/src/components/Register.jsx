@@ -34,6 +34,11 @@ export default function Register({ setShowRegister }) {
         } catch (err) {
             setFailure(true)
             setSuccess(false)
+            Swal({
+                icon: 'error',
+                title: 'Error',
+                text: 'Datos no ingresado / o ingresados incorrectamente...'
+            })
         }
     }
 

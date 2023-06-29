@@ -37,6 +37,11 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
         }
         catch (err) {
             console.log(err)
+            Swal({
+                icon: 'error',
+                title: 'Error',
+                text: 'Datos no ingresado / o ingresados incorrectamente...'
+            })
         }
     }
 
