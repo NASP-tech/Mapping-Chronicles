@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import { Layer, Source } from "react-map-gl";
-
+import { BASE_URL } from "../../services";
 
 export default function BufferEntradasUCALayer({...props}) {
 
     const [ data, setData ] = useState({})
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/bufferEntradasUCA")
+        fetch(`${BASE_URL}/bufferEntradasUCA`)
         .then(res => res.json())
         .then(
             (result) => {

@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from "react";
 import { Layer, Source } from "react-map-gl";
-
+import { BASE_URL } from "../services";
 export default function DynamicBuffer({coords, radius, ...props}) {
 
     const [auxData, setAuxData] = useState([])
 
     useEffect(() => {
         console.log(coords);
-        fetch(`http://localhost:5000/api/layers/getMyBuffer/?latitude=${coords.lat}&longitude=${coords.lng}&radius=${radius || 5000}`)
+        fetch(`${BASE_URL}/layers/getMyBuffer/?latitude=${coords.lat}&longitude=${coords.lng}&radius=${radius || 5000}`)
         .then(res => res.json())
         .then(
             (result) => {

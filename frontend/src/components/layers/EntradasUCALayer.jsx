@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import { Layer, Source } from "react-map-gl";
-
+import { BASE_URL } from "../../services";
 export default function EntradasUCALayer({...props}) {
 
     const [ data , setData ] = useState({})
     
     useEffect(() => {
-        fetch("http://localhost:5000/api/entradasUCA")
+        fetch(`${BASE_URL}http://localhost:5000/api/entradasUCA`)
         .then(res => res.json())
         .then(
             (result) => {
