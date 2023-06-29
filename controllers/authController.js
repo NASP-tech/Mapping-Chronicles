@@ -6,11 +6,9 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const sendEmail = require('../utils/email');
 
-const signToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRES_IN,
-    });
-};
+const signToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+});
 
 const createSendToken = (user, statusCode, res) => {
     const token = signToken(user._id);
@@ -44,6 +42,8 @@ exports.signup = catchAsync(async (req, res, next) => {
 
     // create jwt to log in the user right after singing up. JWT_SECRET is used to sign the new user's id
     createSendToken(newUser, 201, res);
+    console.log(newUser);
+    console.log(res._header);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -61,6 +61,8 @@ exports.login = catchAsync(async (req, res, next) => {
     }
     // 3) if ok, send token to client
     createSendToken(user, 200, res);
+    console.log(user);
+    console.log(res._header);
 });
 
 exports.protect = catchAsync(async (req, res, next) => {
@@ -90,15 +92,13 @@ exports.protect = catchAsync(async (req, res, next) => {
     next(); // grant access to protected route... go to 'next' middlware
 });
 
-exports.restrictTo = (...roles) => {
-    return (req, res, next) => {
-        // roles ['admin', 'nutritionist', 'user']
-        if (!roles.includes(req.user.role)) { // the role is comming in the middleware from the above function protect(), which in the routes is placed before the restricTo
-            return next(new AppError('You do not have permission to perform this action', 403));
-        }
+exports.restrictTo = (...roles) => (req, res, next) => {
+    // roles ['admin', 'nutritionist', 'user']
+    if (!roles.includes(req.user.role)) { // the role is comming in the middleware from the above function protect(), which in the routes is placed before the restricTo
+        return next(new AppError('You do not have permission to perform this action', 403));
+    }
 
-        next();
-    };
+    next();
 };
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
@@ -113,7 +113,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
     // send resettoken to user... TODO: check how to alias the resetURL for a better data presentation on the email
     const resetURL = `${req.protocol}:://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
-    const message = `Submit a patch request with your new password and password confirm to ${resetURL}. Otherwise, please ignore this email`
+    const message = `Submit a patch request with your new password and password confirm to ${resetURL}. Otherwise, please ignore this email`;
 
     try {
         await sendEmail({

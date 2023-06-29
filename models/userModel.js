@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     },
     passwordConfirm: {
         type: String,
-        required: [true, 'password must be confirmed'],
+        required: [false, 'password must be confirmed'],
         // custom validator. NOTE: Only works on create and on save
         validate: {
             validator: function(el) {
@@ -56,8 +56,8 @@ const userSchema = new mongoose.Schema({
 userSchema.pre('save', async function(next) {
     if (!this.isModified('password')) return next(); //only encrypt password when user changes it or creates a new one on singup, not when other data is updated like the email i.e
 
-    this.password = await bcrypt.hash(this.password, 12) // the higher the value (12), the better the encryption, more cpu load is needed tho
-    this.passwordConfirm = undefined; // passwordConfirm is no longer needed once it has been initially confirmed at change/signup. 
+    this.password = await bcrypt.hash(this.password, 12); // the higher the value (12), the better the encryption, more cpu load is needed tho
+    this.passwordConfirm = undefined; // passwordConfirm is no longer needed once it has been initially confirmed at change/signup.
     next();
 });
 
