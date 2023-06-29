@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -15,8 +15,10 @@ import BufferEntradasUCALayer from "./components/layers/BufferEntradasUCA";
 import RutasPrimarias from "./components/layers/RutasPrimarias";
 import ParadasPrimarias from "./components/layers/ParadasPrimarias";
 import LocationComponent from "./components/LocationComponent";
-import DinamicBuffer from "./components/DinamicBuffer";
+import DynamicBuffer from "./components/DynamicBuffer";
 import MyBusStops from "./components/MyBusStops";
+import Map from "./components/Map";
+import DynamicPopUp from "./components/DynamicPopUp";
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
 
 function App() {
@@ -66,7 +68,7 @@ function App() {
     const { lngLat } = e;
     const lat = lngLat.lat;
     const lng = lngLat.lng;
-
+    console.log(e)
     setLat(lat);
     setLong(lng);
 
@@ -108,11 +110,31 @@ function App() {
   // <>
 
   const [ coords, setCoords ] = useState({ lat: 0, lng: 0 });
+  const [ showPopup, setTogglePopup ] = useState(false)
+  const [ coordsLayerSelected, setCoordsLayerSelected ] = useState({lat: 0, lng: 0})
+  const [ dataFeature, setDataFeature ] = useState({properties:{id:0, nombre:""}})
+  
+
+
+  const handleMapOnClick =  (e) => {
+    if(!e) return
+    //console.log(e.lngLat)
+    setCoordsLayerSelected({
+      lat : e.lngLat.lat,
+      lng : e.lngLat.lng
+    }
+      )
+    const feature = e.features[0]
+    console.log(feature)
+    setDataFeature(feature)
+    setTogglePopup(true)
+    console.log('click' + showPopup + coordsLayerSelected.lat)
+  }
 
   return (
     <div className="App">
 
-      <ReactMapGL
+   <ReactMapGL
         initialViewState={{
           longitude: -89.23624,
           latitude: 13.68023,
@@ -122,6 +144,18 @@ function App() {
         mapStyle="mapbox://styles/mapbox/dark-v10"
         mapboxAccessToken={REACT_APP_MAPBOX_TOKEN}
         onDblClick={handleNewPinClick}
+        interactiveLayerIds={['rutasPrimarias', 'paradasPrimarias', 'entradasUCA', 'bufferEntradasUCA']}
+        onClick={(e) => {
+          // console.log( e.features[0] ? e.features[0] : "undefined")
+          setTogglePopup(false)
+          if(!e.features[0]) {
+            setDataFeature({properties:{id:0, nombre:""}})
+            return
+          }
+          handleMapOnClick(e.features[0] ? e : null)
+
+        } }
+        on
         transitionDuration="200"
       >
         <LocationComponent
@@ -130,18 +164,27 @@ function App() {
             setCoords={setCoords} />
 
 
-        {/* <RutasPrimarias /> */}
-        {/* <EntradasUCALayer /> */}
+        <RutasPrimarias /> 
+        <EntradasUCALayer /> 
         <ParadasPrimarias />
-        {/* <BufferEntradasUCALayer /> */}
+        <BufferEntradasUCALayer /> 
         
 
+        {
+          showPopup && (
+            <DynamicPopUp
+              feature={dataFeature}
+              latitude={coordsLayerSelected.lat}
+              longitude={coordsLayerSelected.lng}
+              onClose={() => setTogglePopup(false)}
+            />  
+          )
+        }
+        {coords.lat !== 0 && coords.lng !== 0 && (
+          <MyBusStops coords={coords} idPointSelected={showPopup ? dataFeature.properties.id : null} />) }  
 
         {coords.lat !== 0 && coords.lng !== 0 && (
-          <MyBusStops coords={coords} />) }  
-
-        {coords.lat !== 0 && coords.lng !== 0 && (
-          <DinamicBuffer coords={coords} />) }  
+          <DynamicBuffer coords={coords} />) }  
         {username ?
           (
             <button
@@ -260,6 +303,9 @@ function App() {
         )}
       </ReactMapGL>
 
+
+      {/* <Map coords={coords}/> */}
+    
     </div >
   );
 }

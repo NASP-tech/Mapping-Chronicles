@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Layer, Source } from "react-map-gl";
 
-export default function DinamicBuffer({coords, radius}) {
+export default function DynamicBuffer({coords, radius}) {
 
     const [auxData, setAuxData] = useState([])
 

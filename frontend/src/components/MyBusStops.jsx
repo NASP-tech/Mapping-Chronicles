@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react"
 import { Layer, Source } from "react-map-gl";
 
+export default function MyBusStops({coords, radius, idPointSelected }){
 
-export default function MyBusStops({coords, radius}){
-
+    const [id, setId ] = useState(1);
     const [ data, setData ] = useState([])
 
     useEffect(() => {
@@ -17,12 +17,26 @@ export default function MyBusStops({coords, radius}){
         }
         )
 
-    },[coords])
+    },[coords, radius])
+
+    useEffect(() => {
+        setId(idPointSelected || 1)
+    },[idPointSelected])
+
+
 
     return (
         data[0] &&
-            <Source id="myBusStops" type="geojson" data={data[0]} >
-            <Layer id="myBusStops" type="circle" paint={{'circle-color': 'red', 'circle-radius': 5, 'circle-stroke-width': 1, 'circle-stroke-color': 'white'}} />
+            <Source  id="myBusStops" type="geojson" data={data[0]} >
+            <Layer  id="myBusStops" type="circle" 
+            paint=
+            {
+                { 'circle-color': [
+                    'match',
+                    ['get', 'id'], 
+                    id, 'red',
+                    'blue',
+                ], 'circle-radius': 5, 'circle-stroke-width': 1, 'circle-stroke-color': 'white'}} />
         </Source>
     )
 }
