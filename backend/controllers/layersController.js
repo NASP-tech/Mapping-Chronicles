@@ -71,7 +71,7 @@ exports.getBusStopsByRadius = async function(req, res) {
         const busStops = await ParadasPrimarias.find()
         // console.log( [busStops[0]] )
         
-        console.log({...busStops[0]})
+        // console.log({...busStops[0]})
         const filteredPoints = turf.pointsWithinPolygon(busStops[0]._doc , buffered )
         const filteredPointsCollection = turf.featureCollection([filteredPoints])
         res.status(200).json([filteredPoints])
