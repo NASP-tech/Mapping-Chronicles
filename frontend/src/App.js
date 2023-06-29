@@ -20,6 +20,7 @@ import MyBusStops from "./components/MyBusStops";
 import Map from "./components/Map";
 import DynamicPopUp from "./components/DynamicPopUp";
 import Direction from "./components/Direction";
+import NearestBustStop from "./components/NearestBusStop";
 // import MapboxDirections from "@mapbox/mapbox-gl-directions/src/directions";
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
 
@@ -140,7 +141,8 @@ function App() {
     bufferEntradasUCA: false,
     dynamicBuffer: true,
     myBusStops: true,
-    direction: true
+    direction: true,
+    nearestBusStop: true,
   })
 
   const handleLayerControler = (e) => {
@@ -186,6 +188,10 @@ function App() {
           <input type="checkbox" name="direction" checked={layerControler.direction} onChange={handleLayerControler} />
           <b htmlFor="direction">Direction</b>
         </div>
+        <div className="layer-controler">
+          <input type="checkbox" name="nearestBusStop" checked={layerControler.nearestBusStop} onChange={handleLayerControler} />
+          <b htmlFor="nearestBusStop">Nearest Bus Stop</b>
+          </div>
       </div>
 
     )
@@ -206,7 +212,7 @@ function App() {
         mapStyle="mapbox://styles/mapbox/dark-v10"
         mapboxAccessToken={REACT_APP_MAPBOX_TOKEN}
         onDblClick={handleNewPinClick}
-        interactiveLayerIds={['rutasPrimarias', 'paradasPrimarias', 'entradasUCA', 'bufferEntradasUCA', 'myBusStops']}
+        interactiveLayerIds={['rutasPrimarias', 'paradasPrimarias', 'entradasUCA', 'bufferEntradasUCA', 'myBusStops','nearest-bus-stop']}
         onClick={(e) => {
           // console.log( e.features[0] ? e.features[0] : "undefined")
           setTogglePopup(false)
@@ -236,6 +242,9 @@ function App() {
         <ParadasPrimarias layout={{visibility : layerControler.paradasPrimarias ? 'visible' : 'none' }}/>
         <BufferEntradasUCALayer layout={{visibility : layerControler.bufferEntradasUCA ? 'visible' : 'none' }}/> 
         
+        {coords.lat !== 0 && coords.lng !== 0 && (
+          <NearestBustStop coords={coords} layout={{visibility : layerControler.nearestBusStop ? 'visible' : 'none'}} />)
+        }
         {
           showPopup && (
             <DynamicPopUp
