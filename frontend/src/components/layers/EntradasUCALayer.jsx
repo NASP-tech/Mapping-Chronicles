@@ -6,7 +6,7 @@ export default function EntradasUCALayer({...props}) {
     const [ data , setData ] = useState({})
     
     useEffect(() => {
-        fetch(`${BASE_URL}/entradasUCA`)
+        fetch(`${BASE_URL}/layers/getEntradasUCA`)
         .then(res => res.json())
         .then(
             (result) => {

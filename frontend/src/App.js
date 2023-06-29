@@ -162,11 +162,11 @@ function App() {
         <h2 style={{color:'white', textAlign: 'left', marginBottom: 15}}>Capas</h2>
         <div className="layer-controler">
           <input type="checkbox" name="rutasPrimarias" checked={layerControler.rutasPrimarias} onChange={handleLayerControler} />
-          <b htmlFor="rutasPrimarias">Rutas Primarias</b>
+          <b htmlFor="rutasPrimarias">Rutas</b>
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="paradasPrimarias" checked={layerControler.paradasPrimarias} onChange={handleLayerControler} />
-          <b htmlFor="paradasPrimarias">Paradas Primarias</b>
+          <b htmlFor="paradasPrimarias">Paradas de Bus</b>
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="entradasUCA" checked={layerControler.entradasUCA} onChange={handleLayerControler} />
@@ -174,15 +174,15 @@ function App() {
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="bufferEntradasUCA" checked={layerControler.bufferEntradasUCA} onChange={handleLayerControler} />
-          <b htmlFor="bufferEntradasUCA">Buffer Entradas UCA</b>
+          <b htmlFor="bufferEntradasUCA">Radio Entradas UCA</b>
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="dynamicBuffer" checked={layerControler.dynamicBuffer} onChange={handleLayerControler} />
-          <b htmlFor="dynamicBuffer">Dynamic Buffer</b>
+          <b htmlFor="dynamicBuffer">Mi Rango</b>
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="myBusStops" checked={layerControler.myBusStops} onChange={handleLayerControler} />
-          <b htmlFor="myBusStops">My Bus Stops</b>
+          <b htmlFor="myBusStops">Paradas Cercanas</b>
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="direction" checked={layerControler.direction} onChange={handleLayerControler} />
@@ -190,7 +190,7 @@ function App() {
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="nearestBusStop" checked={layerControler.nearestBusStop} onChange={handleLayerControler} />
-          <b htmlFor="nearestBusStop">Nearest Bus Stop</b>
+          <b htmlFor="nearestBusStop">Parada más cercana</b>
           </div>
       </div>
 

@@ -7,7 +7,7 @@ export default function BufferEntradasUCALayer({...props}) {
     const [ data, setData ] = useState({})
 
     useEffect(() => {
-        fetch(`${BASE_URL}/bufferEntradasUCA`)
+        fetch(`${BASE_URL}/layers/getBufferEntradasUCA`)
         .then(res => res.json())
         .then(
             (result) => {

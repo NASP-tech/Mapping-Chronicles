@@ -7,7 +7,7 @@ export default function ParadasPrimarias({...props}) {
 
 
     useEffect(() => {
-        fetch(`${BASE_URL}/paradasPrimarias`)
+        fetch(`${BASE_URL}/layers/getParadasPrimarias`)
         .then(res => res.json())
         .then(
             (result) => {

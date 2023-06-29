@@ -6,7 +6,7 @@ export default function RutasPrimariasLayer({ ...props }) {
     const [ data, setData ] = useState([])
 
     useEffect(() => {
-        fetch(`${BASE_URL}/rutasPrimarias`)
+        fetch(`${BASE_URL}/layers/getRutasPrimarias`)
         .then(res => res.json())
         .then(
             (result) => {
