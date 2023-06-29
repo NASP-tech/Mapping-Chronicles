@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { Room, Star } from "@material-ui/icons"
@@ -19,6 +19,8 @@ import DynamicBuffer from "./components/DynamicBuffer";
 import MyBusStops from "./components/MyBusStops";
 import Map from "./components/Map";
 import DynamicPopUp from "./components/DynamicPopUp";
+import Direction from "./components/Direction";
+// import MapboxDirections from "@mapbox/mapbox-gl-directions/src/directions";
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
 
 function App() {
@@ -51,7 +53,7 @@ function App() {
       try {
         const res = await axios.get(url);
         setPins(res.data);
-        console.log(res);
+        //console.log(res);
       } catch (err) {
         console.log(err);
       }
@@ -68,7 +70,6 @@ function App() {
     const { lngLat } = e;
     const lat = lngLat.lat;
     const lng = lngLat.lng;
-    console.log(e)
     setLat(lat);
     setLong(lng);
 
@@ -125,11 +126,13 @@ function App() {
     }
       )
     const feature = e.features[0]
-    console.log(feature)
+    // console.log(feature)
     setDataFeature(feature)
     setTogglePopup(true)
-    console.log('click' + showPopup + coordsLayerSelected.lat)
+    //console.log('click' + showPopup + coordsLayerSelected.lat)
   }
+
+  
 
   return (
     <div className="App">
@@ -161,7 +164,12 @@ function App() {
         <LocationComponent
             offsetLeft={visualViewport.zoom * 5}
             offsetTop={-visualViewport.zoom * 10} 
-            setCoords={setCoords} />
+            setCoords={setCoords} 
+            style={{
+              fontSize: visualViewport.zoom * 9 || 20,
+              color: "red",
+              cursor: "pointer"
+            }}/>
 
 
         <RutasPrimarias /> 
@@ -169,22 +177,34 @@ function App() {
         <ParadasPrimarias />
         <BufferEntradasUCALayer /> 
         
-
         {
           showPopup && (
             <DynamicPopUp
-              feature={dataFeature}
-              latitude={coordsLayerSelected.lat}
-              longitude={coordsLayerSelected.lng}
+            feature={dataFeature}
+            latitude={coordsLayerSelected.lat}
+            longitude={coordsLayerSelected.lng}
               onClose={() => setTogglePopup(false)}
             />  
           )
         }
+        
         {coords.lat !== 0 && coords.lng !== 0 && (
           <MyBusStops coords={coords} idPointSelected={showPopup ? dataFeature.properties.id : null} />) }  
 
         {coords.lat !== 0 && coords.lng !== 0 && (
           <DynamicBuffer coords={coords} />) }  
+        {coords.lat !== 0 && coords.lng !== 0 && (
+          <Direction coords={coords} to={coordsLayerSelected} />) } 
+
+          <NavigationControl
+            position="bottom-left"
+          />
+        {/* <MapboxDirections 
+          accessToken={REACT_APP_MAPBOX_TOKEN}
+          unit= 'metric'
+          profile="mapbox/driving"
+          language="es"   
+        /> */}
         {username ?
           (
             <button

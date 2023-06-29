@@ -1,0 +1,33 @@
+.container{
+    position: absolute;
+    top: 20px;
+    width: 300px;
+    left: 20px;
+    height: fit-content;
+    background-color: #202020d3;
+    z-index: 1;
+    padding: 20px 30px 100px 20px;
+}
+
+.container h1{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.tittle{
+    font-size: 1rem;
+    font-weight: 'bold';
+    margin-bottom: '10px';
+    color:white;
+}
+
+.element{
+    color: white;
+    font-size: 0.9rem;
+    list-style: none;
+    margin-bottom: 1vh;
+    
+    bleed: 1rem;
+}

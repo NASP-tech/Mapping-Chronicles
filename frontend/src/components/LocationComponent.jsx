@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from "react";
 import { Marker } from "react-map-gl";
 import { Room, Star } from "@material-ui/icons"
-export default function LocationComponent({viewport, setCoords, ...props}) {
+export default function LocationComponent({viewport, setCoords, style, ...props}) {
 
     const [ location, setLocation ] = useState(null)
 
@@ -34,15 +34,10 @@ export default function LocationComponent({viewport, setCoords, ...props}) {
             latitude={location ? location.latitude : 0}
             longitude={location ? location.longitude : 0}
             anchor="bottom"
-            
-
+            {...props}
             >
             <Room
-                style={{
-                  fontSize: visualViewport.zoom * 10,
-                  color: "red",
-                  cursor: "pointer"
-                }}
+                style={style}
               />
         </Marker>
 
