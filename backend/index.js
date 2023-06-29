@@ -6,11 +6,6 @@ const cors = require('cors');
 const app = express();
 const pinRoute = require("./routes/pins");
 const userRoute = require("./routes/users");
-const entradasUCARoute = require("./routes/entradasUCA");
-const bufferEntradasUCARoute = require("./routes/bufferEntradasUCA");
-const rutasPrimariasRoute = require("./routes/rutasPrimarias");
-const paradasPrimariasRoute = require("./routes/paradasPrimarias");
-const dinamicBufferRoute = require("./routes/dinamicBuffer");
 const layerRoute = require("./routes/layers");
 dotenv.config();
 
