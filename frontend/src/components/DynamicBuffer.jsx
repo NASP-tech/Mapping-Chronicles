@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Layer, Source } from "react-map-gl";
 
-export default function DynamicBuffer({coords, radius}) {
+export default function DynamicBuffer({coords, radius, ...props}) {
 
     const [auxData, setAuxData] = useState([])
 
@@ -22,7 +22,7 @@ export default function DynamicBuffer({coords, radius}) {
     return (
         auxData[0] &&
             <Source id="bufferLocationUCA" type="geojson" data={auxData[0]} >
-            <Layer id="bufferLocationUCA" type="fill" paint={{'fill-color': '#007cbf', 'fill-opacity': 0.2, "fill-outline-color" : "blue"}} />
+            <Layer id="bufferLocationUCA" type="fill" paint={{'fill-color': '#007cbf', 'fill-opacity': 0.2, "fill-outline-color" : "blue"}} {...props} />
         </Source>
         
     );

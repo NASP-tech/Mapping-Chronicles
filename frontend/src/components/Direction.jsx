@@ -54,7 +54,7 @@ export default function Direction ({ feature, coords,to,  ...props}){
             }
         </div>
         <Source id="direction" type="geojson" data={direction} >
-            <Layer id="direction" type="line" paint={{'line-color': '#fc036f', 'line-width': 8}} />
+            <Layer id="direction" type="line" paint={{'line-color': '#7b00ff', 'line-width': 4}} {...props}/>
         </Source>
         </>
     )

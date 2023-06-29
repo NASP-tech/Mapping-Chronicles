@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { Layer, Source } from "react-map-gl";
 
 
-export default function BufferEntradasUCALayer(props) {
+export default function BufferEntradasUCALayer({...props}) {
 
     const [ data, setData ] = useState({})
 
@@ -24,7 +24,7 @@ export default function BufferEntradasUCALayer(props) {
     return(
         { data } && 
         <Source id="bufferEntradasUCA" type="geojson" data={data[0] ? data[0] : {} } >
-            <Layer id="bufferEntradasUCA" type="fill" paint={{'fill-color': '#007cbf', 'fill-opacity': 0.5}} />
+            <Layer id="bufferEntradasUCA" type="fill" paint={{'fill-color': '#007cbf', 'fill-opacity': 0.5}} {...props}/>
         </Source>
         )
     }

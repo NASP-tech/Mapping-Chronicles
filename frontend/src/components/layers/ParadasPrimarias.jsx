@@ -1,7 +1,7 @@
 import React , { useEffect, useState } from "react";
 import { Layer, Source } from "react-map-gl";
 
-export default function ParadasPrimarias(props) {
+export default function ParadasPrimarias({...props}) {
 
     const [ data, setData ] = useState([])
 
@@ -22,7 +22,7 @@ export default function ParadasPrimarias(props) {
     return(
         data[0] &&
         <Source id="paradasPrimarias" type="geojson" data={data[0]} >
-            <Layer  id="paradasPrimarias" type="circle" paint={{'circle-radius': 5, 'circle-color': '#FFA500'}} />
+            <Layer  id="paradasPrimarias" type="circle" paint={{'circle-radius': 5, 'circle-color': '#FFA500'}} {...props}/>
         </Source>
     )
 }

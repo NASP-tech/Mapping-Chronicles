@@ -132,11 +132,70 @@ function App() {
     //console.log('click' + showPopup + coordsLayerSelected.lat)
   }
 
-  
+  // layer controler
+  const [ layerControler, setLayerControler ] = useState({
+    rutasPrimarias: false,
+    paradasPrimarias: false,
+    entradasUCA: true,
+    bufferEntradasUCA: false,
+    dynamicBuffer: true,
+    myBusStops: true,
+    direction: true
+  })
+
+  const handleLayerControler = (e) => {
+    console.log(e.target.name)
+    setLayerControler({
+      ...layerControler,
+      [e.target.name]: e.target.checked
+    })
+  }
+
+  // Layer controler container
+  const LayerControllerContainer = () =>  {
+
+
+    return(
+      <div className="layer-controler-container">
+        <h2 style={{color:'white', textAlign: 'left', marginBottom: 15}}>Capas</h2>
+        <div className="layer-controler">
+          <input type="checkbox" name="rutasPrimarias" checked={layerControler.rutasPrimarias} onChange={handleLayerControler} />
+          <b htmlFor="rutasPrimarias">Rutas Primarias</b>
+        </div>
+        <div className="layer-controler">
+          <input type="checkbox" name="paradasPrimarias" checked={layerControler.paradasPrimarias} onChange={handleLayerControler} />
+          <b htmlFor="paradasPrimarias">Paradas Primarias</b>
+        </div>
+        <div className="layer-controler">
+          <input type="checkbox" name="entradasUCA" checked={layerControler.entradasUCA} onChange={handleLayerControler} />
+          <b htmlFor="entradasUCA">Entradas UCA</b>
+        </div>
+        <div className="layer-controler">
+          <input type="checkbox" name="bufferEntradasUCA" checked={layerControler.bufferEntradasUCA} onChange={handleLayerControler} />
+          <b htmlFor="bufferEntradasUCA">Buffer Entradas UCA</b>
+        </div>
+        <div className="layer-controler">
+          <input type="checkbox" name="dynamicBuffer" checked={layerControler.dynamicBuffer} onChange={handleLayerControler} />
+          <b htmlFor="dynamicBuffer">Dynamic Buffer</b>
+        </div>
+        <div className="layer-controler">
+          <input type="checkbox" name="myBusStops" checked={layerControler.myBusStops} onChange={handleLayerControler} />
+          <b htmlFor="myBusStops">My Bus Stops</b>
+        </div>
+        <div className="layer-controler">
+          <input type="checkbox" name="direction" checked={layerControler.direction} onChange={handleLayerControler} />
+          <b htmlFor="direction">Direction</b>
+        </div>
+      </div>
+
+    )
+  }
 
   return (
     <div className="App">
-
+      <LayerControllerContainer
+        
+      />
    <ReactMapGL
         initialViewState={{
           longitude: -89.23624,
@@ -147,7 +206,7 @@ function App() {
         mapStyle="mapbox://styles/mapbox/dark-v10"
         mapboxAccessToken={REACT_APP_MAPBOX_TOKEN}
         onDblClick={handleNewPinClick}
-        interactiveLayerIds={['rutasPrimarias', 'paradasPrimarias', 'entradasUCA', 'bufferEntradasUCA']}
+        interactiveLayerIds={['rutasPrimarias', 'paradasPrimarias', 'entradasUCA', 'bufferEntradasUCA', 'myBusStops']}
         onClick={(e) => {
           // console.log( e.features[0] ? e.features[0] : "undefined")
           setTogglePopup(false)
@@ -172,10 +231,10 @@ function App() {
             }}/>
 
 
-        <RutasPrimarias /> 
-        <EntradasUCALayer /> 
-        <ParadasPrimarias />
-        <BufferEntradasUCALayer /> 
+        <RutasPrimarias layout={{visibility : layerControler.rutasPrimarias ? 'visible' : 'none' }}/> 
+        <EntradasUCALayer layout={{visibility : layerControler.entradasUCA ? 'visible' : 'none' }} /> 
+        <ParadasPrimarias layout={{visibility : layerControler.paradasPrimarias ? 'visible' : 'none' }}/>
+        <BufferEntradasUCALayer layout={{visibility : layerControler.bufferEntradasUCA ? 'visible' : 'none' }}/> 
         
         {
           showPopup && (
@@ -189,12 +248,12 @@ function App() {
         }
         
         {coords.lat !== 0 && coords.lng !== 0 && (
-          <MyBusStops coords={coords} idPointSelected={showPopup ? dataFeature.properties.id : null} />) }  
+          <MyBusStops coords={coords} idPointSelected={showPopup ? dataFeature.properties.id : null} layout={{visibility : layerControler.myBusStops ? 'visible' : 'none' }}/>) }  
 
         {coords.lat !== 0 && coords.lng !== 0 && (
-          <DynamicBuffer coords={coords} />) }  
+          <DynamicBuffer coords={coords} layout={{visibility : layerControler.dynamicBuffer ? 'visible' : 'none' }} />) }  
         {coords.lat !== 0 && coords.lng !== 0 && (
-          <Direction coords={coords} to={coordsLayerSelected} />) } 
+          <Direction coords={coords} to={coordsLayerSelected} layout={{visibility : layerControler.direction ? 'visible' : 'none' }} />) } 
 
           <NavigationControl
             position="bottom-left"

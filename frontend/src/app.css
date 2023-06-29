@@ -83,3 +83,26 @@ input::placeholder, textarea::placeholder {
     top: 10px;
     right: 10px;
 }
+
+
+.layer-controler-container{
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    z-index: 1;
+    background-color: #202020d3;
+    padding: 10px;
+
+}
+
+.layer-controler{
+    text-decoration: none;
+}
+.layer-controler-container b{
+    color: white;
+    font-size: 12px;
+    margin-left: 10px;
+    text-decoration: aqua;
+    list-style: none;
+    font-weight: 500;
+}

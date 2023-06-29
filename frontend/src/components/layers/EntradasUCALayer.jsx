@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Layer, Source } from "react-map-gl";
 
-export default function EntradasUCALayer(props) {
+export default function EntradasUCALayer({...props}) {
 
     const [ data , setData ] = useState({})
     
@@ -21,7 +21,7 @@ export default function EntradasUCALayer(props) {
 
     return(
         <Source id="entradasUCA" type="geojson" data={data[0]} >
-            <Layer  id="entradasUCA" type="circle" paint={{'circle-radius': 5, 'circle-color': '#007cbf'}} />
+            <Layer  id="entradasUCA" type="circle" paint={{'circle-radius': 5, 'circle-color': '#007cbf'}} {...props}/>
         </Source>
         )
     }
