@@ -24,17 +24,24 @@ export default function Register({ setShowRegister }) {
         };
 
         try {
-            const { data } = await axios.post(url, newUser).then(response => {
-                Swal("Success", "User Created!", "success")
-            });;
+            const { data } = await axios.post(url, newUser);
+            console.log(data);
 
-            setFailure(false)
-            setSuccess(true)
+            setFailure(false);
+            setSuccess(true);
+            Swal("Success", "User Created!", "success");
+        } catch (error) {
+            console.log(error);
 
-        } catch (err) {
-            setFailure(true)
-            setSuccess(false)
+            setFailure(true);
+            setSuccess(false);
+            Swal({
+                icon: 'error',
+                title: 'Error',
+                text: 'Failed to create user. Please try again.',
+            });
         }
+
     }
 
     return (

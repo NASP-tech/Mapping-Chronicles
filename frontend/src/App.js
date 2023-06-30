@@ -84,18 +84,25 @@ function App() {
         };
 
         try {
-            const { data } = await axios.post(url, body).then(response => {
-                Swal("Success", "Pin Created!", "success")
-            });;
+            const { data } = await axios.post(url, body);
             console.log(data);
+            Swal("Success", "Pin Created!", "success");
         } catch (error) {
             console.log(error);
+            Swal({
+                icon: 'error',
+                title: 'Error',
+                text: 'Not Created!, Try Again.'
+            });
         }
+
+        window.location.reload()
     }
 
     const handleLogout = () => {
         myStorage.removeItem("user");
         setUsername(null);
+        Swal("Success", "User Logout Correctly", "success");
     }
 
     return (
@@ -124,7 +131,9 @@ function App() {
                         <div className="buttons">
                             <button
                                 className="button login"
-                                onClick={() => setShowLogin(true)}
+                                onClick={
+                                    () => setShowLogin(true)
+                                }
                             >Login</button>
                             <button
                                 className="button register"
