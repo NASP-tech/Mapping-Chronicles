@@ -1,0 +1,1 @@
+changed db and jwt creds since even though the leaked config.env file was deleted, it's still showing on the commit

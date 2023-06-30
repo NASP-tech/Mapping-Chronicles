@@ -4,7 +4,7 @@ import { useState } from "react"
 import axios from "axios";
 import Swal from 'sweetalert';
 
-export default function Register({setShowRegister}) {
+export default function Register({ setShowRegister }) {
 
     const [success, setSuccess] = useState(false)
     const [failure, setFailure] = useState(false)
@@ -15,7 +15,7 @@ export default function Register({setShowRegister}) {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const url = 'http://localhost:5000/api/users/register'
+        const url = 'http://localhost:3000/api/users/register'
 
         const newUser = {
             "username": username,
@@ -27,10 +27,10 @@ export default function Register({setShowRegister}) {
             const { data } = await axios.post(url, newUser).then(response => {
                 Swal("Success", "User Created!", "success")
             });;
-            
+
             setFailure(false)
             setSuccess(true)
-            
+
         } catch (err) {
             setFailure(true)
             setSuccess(false)
@@ -74,7 +74,7 @@ export default function Register({setShowRegister}) {
                 }
             </form>
 
-            <Cancel className="registerCancel" onClick={() => setShowRegister(false)}/>
+            <Cancel className="registerCancel" onClick={() => setShowRegister(false)} />
 
         </div>
     )
