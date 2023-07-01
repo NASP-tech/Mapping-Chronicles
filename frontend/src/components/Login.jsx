@@ -13,7 +13,9 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const url = 'http://localhost:3000/api/v1/users/login'
+
+        const url = 'http://localhost:3000/api/users/login'
+
 
         const loggedUser = {
             "email": user,
@@ -21,28 +23,24 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
         };
 
         try {
-            const { data } = await axios.post(url, loggedUser)
-                .then(response => {
-                    myStorage.setItem("user", JSON.stringify(response.data.username))
-                    setUsername(data.username)
-                    setShowLogin(false)
-                    setFailure(false)
-
-                })
-                // myStorage.setItem("user", res.data.username)
-                // myStorage.setItem("user", JSON.stringify(data.user))
-                .then(res => {
-                    Swal("Success", "User Logged!", "success")
-                })
-        }
-        catch (err) {
-            console.log(err)
+            const { data } = await axios.post(url, loggedUser);
+            myStorage.setItem("user", JSON.stringify(data.username));
+            setUsername(data.username);
+            setShowLogin(false);
+            setFailure(false);
+            Swal.fire("Success", "User Logged!", "success");
+        } catch (error) {
+            console.log(error);
             Swal({
                 icon: 'error',
                 title: 'Error',
-                text: 'Datos no ingresado / o ingresados incorrectamente...'
-            })
+                text: 'Failed to LogIn. Please try again.',
+            });
+
         }
+
+
+        window.location.reload()
     }
 
     return (
