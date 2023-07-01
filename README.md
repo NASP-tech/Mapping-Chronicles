@@ -124,11 +124,6 @@ Recuerda que Chronicles Maps es un proyecto de código abierto y la comunidad es
 - 00400519@uca.ed.sv - Edwin Bladimir Gomez
 - 00001318@uca.edu.sv - René Guillermo Canales Clímaco
 
-## Agradecimientos
-
-- Agradecemos a la Universidad Centroamericana José Simeón Cañas por brindarnos la oportunidad de desarrollar este proyecto. También agradecemos a nuestros profesores por su apoyo y orientación durante el proceso de desarrollo. Finalmente, agradecemos a nuestros compañeros de clase por su colaboración y contribuciones al proyecto. ¡Gracias a todos! 
-- Agradecemos a nuestros familiares y amigos por su apoyo y comprensión durante el desarrollo de este proyecto. ¡Gracias por su apoyo incondicional!
-
 ## Referencias
 
 - [1] https://www.mongodb.com/
