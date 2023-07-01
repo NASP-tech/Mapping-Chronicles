@@ -14,6 +14,7 @@ import Login from "./components/Login";
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
 
 function App() {
+
     const myStorage = window.localStorage;
 
     const [pins, setPins] = useState([]);
@@ -36,6 +37,7 @@ function App() {
         longitude: 13.68023,
         zoom: 14
     });
+
 
     useEffect(() => {
         const getPins = async () => {
@@ -69,6 +71,7 @@ function App() {
             lng,
         });
     };
+
 
     const handleClick = async (e) => {
         e.preventDefault();

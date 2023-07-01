@@ -16,8 +16,9 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
 
         const url = 'http://localhost:3000/api/users/login'
 
+
         const loggedUser = {
-            "username": user,
+            "email": user,
             "password": password
         };
 
@@ -35,6 +36,7 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
                 title: 'Error',
                 text: 'Failed to LogIn. Please try again.',
             });
+
         }
 
 
@@ -50,7 +52,7 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
             <form onSubmit={(e) => handleSubmit(e)}>
                 <input
                     type="text"
-                    placeholder="username"
+                    placeholder="Email"
                     onChange={(e) => setUser(e.target.value)} />
                 <input
                     type="password"

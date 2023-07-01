@@ -8,22 +8,23 @@ export default function Register({ setShowRegister }) {
 
     const [success, setSuccess] = useState(false)
     const [failure, setFailure] = useState(false)
-    const [username, setUsername] = useState(null)
+    const [username, setName] = useState(null)
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const url = 'http://localhost:3000/api/users/register'
+        const url = 'http://localhost:3000/api/v1/users/signup'
 
         const newUser = {
-            "username": username,
+            "name": username,
             "email": email,
             "password": password
         };
 
         try {
+
             const { data } = await axios.post(url, newUser);
             console.log(data);
 
@@ -53,8 +54,8 @@ export default function Register({ setShowRegister }) {
             <form onSubmit={(e) => handleSubmit(e)}>
                 <input
                     type="text"
-                    placeholder="username"
-                    onChange={(e) => setUsername(e.target.value)} />
+                    placeholder="Name"
+                    onChange={(e) => setName(e.target.value)} />
                 <input
                     type="email"
                     placeholder="email"
@@ -62,6 +63,10 @@ export default function Register({ setShowRegister }) {
                 <input
                     type="password"
                     placeholder="password"
+                    onChange={(e) => setPassword(e.target.value)} />
+                <input
+                    type="password"
+                    placeholder="confirm password"
                     onChange={(e) => setPassword(e.target.value)} />
                 <button
                     className="registerBtn"
