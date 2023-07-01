@@ -14,31 +14,33 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const url = 'http://localhost:5000/api/users/login'
+        const url = 'http://localhost:3000/api/users/login'
+
 
         const loggedUser = {
-            "username": user,
+            "email": user,
             "password": password
         };
 
         try {
-            const { data } = await axios.post(url, loggedUser)
-                .then(response => {
-                    myStorage.setItem("user", JSON.stringify(response.data.username))
-                    setUsername(data.username)
-                    setShowLogin(false)
-                    setFailure(false)
+            const { data } = await axios.post(url, loggedUser);
+            myStorage.setItem("user", JSON.stringify(data.username));
+            setUsername(data.username);
+            setShowLogin(false);
+            setFailure(false);
+            Swal.fire("Success", "User Logged!", "success");
+        } catch (error) {
+            console.log(error);
+            Swal({
+                icon: 'error',
+                title: 'Error',
+                text: 'Failed to LogIn. Please try again.',
+            });
 
-                })
-                // myStorage.setItem("user", res.data.username)
-                // myStorage.setItem("user", JSON.stringify(data.user))
-                .then(res => {
-                    Swal("Success", "User Logged!", "success")
-                })
         }
-        catch (err) {
-            console.log(err)
-        }
+
+
+        window.location.reload()
     }
 
     return (
@@ -50,7 +52,7 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
             <form onSubmit={(e) => handleSubmit(e)}>
                 <input
                     type="text"
-                    placeholder="username"
+                    placeholder="Email"
                     onChange={(e) => setUser(e.target.value)} />
                 <input
                     type="password"
