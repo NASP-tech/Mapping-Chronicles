@@ -13,7 +13,7 @@ La aplicación Chronicles Maps ofrece los siguientes beneficios:
 
 - **Mejora de la seguridad estudiantil**: Proporciona información precisa en tiempo real sobre la ubicación del vehículo de transporte, permitiendo a los estudiantes conocer la ubicación exacta del vehículo y aumentando su sensación de seguridad durante el viaje.
 
-- **Optimización de la eficiencia del servicio de transporte**: Permite a los estudiantes planificar su tiempo de espera y estimar el tiempo de llegada al destino final gracias a la visualización en tiempo real de la ubicación del vehículo. Esto ayuda a minimizar los tiempos de espera y a optimizar el tiempo de viaje.
+- **Optimización del servicio de transporte**: Permite a los estudiantes planificar su tiempo de espera y estimar el tiempo de llegada al destino final gracias a la visualización en tiempo real de la ubicación del vehículo. Esto ayuda a minimizar los tiempos de espera y a optimizar el tiempo de viaje.
 
 - **Solución innovadora y moderna**: Mapping-Chronicles presenta una solución tecnológica avanzada que mejora la experiencia del servicio de transporte universitario. La aplicación proporciona un enfoque actualizado y eficiente para el seguimiento de vehículos, brindando a los estudiantes una experiencia de viaje más cómoda y conveniente.
   
