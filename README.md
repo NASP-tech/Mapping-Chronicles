@@ -69,7 +69,7 @@ Para comenzar rápidamente con Chronicles Maps, sigue estos pasos:
 
 ## Licencia
 
-El proyecto Chronicles Maps se distribuye bajo la licencia ____. Consulte el archivo `LICENSE` para obtener más información.
+El proyecto Chronicles Maps se distribuye bajo la licencia MIT. Consulte el archivo `LICENSE` para obtener más información.
 
 ## Contribución
 
