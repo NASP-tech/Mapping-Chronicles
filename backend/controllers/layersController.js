@@ -111,7 +111,7 @@ exports.getEntradasUCA = async function(req, res) {
 
 exports.getParadasPrimarias = async function(req, res) {
     try{
-        const paradasPrimarias = await ParadasPrimarias.find();
+        const paradasPrimarias = await ParadasPrimarias.find(); 
         res.status(200).json(paradasPrimarias);
     }
     catch(err){

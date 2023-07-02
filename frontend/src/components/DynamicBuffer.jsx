@@ -17,7 +17,7 @@ export default function DynamicBuffer({coords, radius, ...props}) {
         }
         )
 
-    }, [coords])
+    }, [coords,radius])
 
     return (
         auxData[0] &&

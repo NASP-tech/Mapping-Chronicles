@@ -210,7 +210,7 @@ function App() {
   return (
     <div className="App">
       <LayerControllerContainer
-        
+    
       />
    <ReactMapGL
         initialViewState={{
@@ -311,7 +311,7 @@ function App() {
                 }
 
                 {pins.map((p) => (
-                    <>
+                    <div key={ p._id  }>
                         <Marker
                             key={p.title}
                             latitude={p.lat}
@@ -322,7 +322,7 @@ function App() {
                         >
                             <Room
                                 style={{
-                                    fontSize: visualViewport.zoom * 10,
+                                    fontSize: visualViewport.zoom * 10 || 20,
                                     color: p.username === username ? "blue" : "red",
                                     cursor: "pointer"
                                 }}
@@ -356,7 +356,7 @@ function App() {
                             </Popup >
                         )}
 
-                    </>
+                    </div>
                 ))}
                 {newPlace && (
 

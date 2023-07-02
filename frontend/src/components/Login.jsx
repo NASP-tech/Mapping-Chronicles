@@ -2,7 +2,7 @@ import { Cancel, Room } from "@material-ui/icons"
 import "./login.css"
 import { useState } from "react"
 import axios from "axios";
-import Swal from 'sweetalert';
+import swal from "sweetalert";
 
 export default function Login({ setShowLogin, myStorage, setUsername }) {
     const [failure, setFailure] = useState(false)
@@ -28,10 +28,12 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
             setUsername(data.username);
             setShowLogin(false);
             setFailure(false);
-            Swal.fire("Success", "User Logged!", "success");
+            swal("Success", "User Logged!", "success");
+            window.location.reload()
+
         } catch (error) {
             console.log(error);
-            Swal({
+            swal({
                 icon: 'error',
                 title: 'Error',
                 text: 'Failed to LogIn. Please try again.',
@@ -40,7 +42,6 @@ export default function Login({ setShowLogin, myStorage, setUsername }) {
         }
 
 
-        window.location.reload()
     }
 
     return (

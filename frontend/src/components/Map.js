@@ -49,7 +49,7 @@ export default function Map ({coords, radius}) {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/layers/getBusStopsByRadius/?latitude=${coords.lat || 13.68023 }&longitude=${coords.lng || -89.23624}&radius=${radius || 5000}`)
+        fetch(`http://localhost:3000/api/layers/getBusStopsByRadius/?latitude=${coords.lat || 13.68023 }&longitude=${coords.lng || -89.23624}&radius=${radius || 5000}`)
         .then(res => res.json())
         .then(
             (result) => {

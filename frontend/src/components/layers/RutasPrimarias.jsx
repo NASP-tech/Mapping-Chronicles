@@ -10,7 +10,6 @@ export default function RutasPrimariasLayer({ ...props }) {
         .then(res => res.json())
         .then(
             (result) => {
-                console.log(result)
                 setData(result)
             }
         ).catch((err) => {

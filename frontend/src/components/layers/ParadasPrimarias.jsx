@@ -11,7 +11,6 @@ export default function ParadasPrimarias({...props}) {
         .then(res => res.json())
         .then(
             (result) => {
-                console.log(result)
                 setData(result)
             }
         ).catch((err) => {

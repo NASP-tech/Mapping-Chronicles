@@ -4,14 +4,13 @@ import { BASE_URL } from "../services";
 
 export default function NearestBustStop ({coords, ...props }){
 
-    const [ nearestBusStop, setNearestBusStop ] = useState({})
+    const [ nearestBusStop, setNearestBusStop ] = useState([])
 
     useEffect(()=> {
 
         fetch(`${BASE_URL}/layers/getNearestBusStop/?latitude=${coords.lat}&longitude=${coords.lng}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setNearestBusStop(data)
         }
         )
@@ -21,6 +20,7 @@ export default function NearestBustStop ({coords, ...props }){
 
 
     return(
+        nearestBusStop[0] &&
         <Source id="nearest-bus-stop" type="geojson" data={nearestBusStop[0]}>
             <Layer
 

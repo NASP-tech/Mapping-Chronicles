@@ -15,10 +15,10 @@ export default function Register({ setShowRegister }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const url = 'http://localhost:3000/api/v1/users/signup'
+        const url = 'http://localhost:3000/api/users/register'
 
         const newUser = {
-            "name": username,
+            "username": username,
             "email": email,
             "password": password
         };

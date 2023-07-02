@@ -4,8 +4,8 @@ const dotenv = require("dotenv")
 const cors = require('cors');
 
 const app = express();
-const pinRoute = require("./routes/pins");
-const userRoute = require("./routes/users");
+const pinRoute = require("./routes/pinRoutes");
+const userRoute = require("./routes/userRoutes");
 const layerRoute = require("./routes/layers");
 dotenv.config();
 

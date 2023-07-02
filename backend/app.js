@@ -12,7 +12,7 @@ const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const userRouter = require('./routes/userRoutes');
 const pinRouter = require('./routes/pinRoutes');
-
+const layerRoute = require("./routes/layers");
 const app = express();
 
 // set template engines
@@ -39,7 +39,7 @@ app.use(express.static(`${__dirname}/public`)); // public serves a root director
 // mount routes here
 app.use('/api/users', userRouter);
 app.use('/api/pins', pinRouter);
-
+app.use("/api/layers", layerRoute);
 // handle unhandled endpoints
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
