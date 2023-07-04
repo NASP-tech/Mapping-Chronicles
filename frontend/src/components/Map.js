@@ -1,12 +1,5 @@
 /*
-  En este componente se muestra el mapa de la ciudad, se utiliza la libreria de mapbox para mostrar el mapa y se utiliza la api de mapbox para obtener los datos de los buses y mostrarlos en el mapa. 
-  Se utiliza el hook useEffect para inicializar el mapa y para actualizarlo cada vez que se cambia la ubicacion del usuario.
-  Se utiliza el hook useState para guardar los datos de los buses y para guardar el mapa.
-  Se utiliza el hook useRef para guardar la referencia del mapa.
-  Se utiliza el hook useState para guardar el estado de los datos de los buses.
-  Se utiliza el hook useState para guardar el estado del mapa.
-  Se utiliza el hook useState para guardar el estado de los datos de los buses.
-
+  Este componente se encarga de mostrar el mapa y los marcadores de las paradas de bus cercanas a la ubicación del usuario.
 */
 import React, {useRef, useEffect, useState} from "react";
 import mapboxgl from "mapbox-gl";

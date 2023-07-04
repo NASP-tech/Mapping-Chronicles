@@ -1,10 +1,5 @@
 /*
-    Este componente se encarga de mostrar el punto más cercano a la ubicación del usuario en el mapa.
-    Se utiliza el hook useState para almacenar los datos de la capa
-    Se utiliza el hook useEffect para realizar la petición de los datos al servidor
-    Se utiliza el componente Source para definir la fuente de los datos
-    Se utiliza el componente Layer para definir la capa de los datos
-    Se utiliza el componente BASE_URL para definir la ruta base de la petición
+    Este componente se encarga de mostrar la parada de bus más cercana al usuario.
 */
 import React, { useState, useEffect} from "react";
 import { Source, Layer } from "react-map-gl";

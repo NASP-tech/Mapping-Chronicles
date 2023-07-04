@@ -1,10 +1,5 @@
 /*
     Este componente es el encargado de mostrar el formulario de registro de usuarios. 
-    Se utiliza el hook useState para almacenar los datos del formulario
-    Se utiliza el componente Cancel para cerrar el formulario
-    Se utiliza el componente Room para mostrar el logo de la aplicación
-    Se utiliza el componente axios para realizar la petición al servidor
-    Se utiliza el componente Swal para mostrar una alerta al usuario
 */
 import { Cancel, Room } from "@material-ui/icons"
 import "./register.css"

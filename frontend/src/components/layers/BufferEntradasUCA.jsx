@@ -1,11 +1,6 @@
 /* 
     En esta clase se define la capa que muestra el buffer de 100 metros de las entradas a la UCA
-    Se utiliza el hook useState para almacenar los datos de la capa
-    Se utiliza el hook useEffect para realizar la petición de los datos al servidor
-    Se utiliza el componente Source para definir la fuente de los datos
-    Se utiliza el componente Layer para definir la capa de los datos
-    Se utiliza el componente BASE_URL para definir la ruta base de la petición
- */
+*/
 
 import React, {useEffect, useState} from "react";
 import { Layer, Source } from "react-map-gl";

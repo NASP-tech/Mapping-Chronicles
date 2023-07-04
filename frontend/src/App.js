@@ -1,6 +1,5 @@
 /*
-  Este hook se encarga de manejar los cambios en los inputs de los formularios y de guardar los datos de los inputs en un objeto. 
-  Se utiliza el hook useState para guardar los datos de los inputs.
+  Este archivo es el que se encarga de renderizar la aplicación, es el primer archivo que se ejecuta al iniciar la aplicación. 
 */
 import { useCallback, useEffect, useState } from "react";
 

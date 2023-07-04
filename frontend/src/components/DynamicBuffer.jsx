@@ -1,10 +1,5 @@
 /* 
-    En esta clase se define la capa que muestra el buffer de 100 metros de las entradas a la UCA en el mapa dinámico de la aplicación web
-    Se utiliza el hook useState para almacenar los datos de la capa en el estado auxData
-    Se utiliza el hook useEffect para realizar la petición de los datos al servidor cada vez que cambia el estado de coords o radius (radio del buffer)
-    Se utiliza el componente Source para definir la fuente de los datos de la capa auxData en el mapa
-    Se utiliza el componente Layer para definir la capa de los datos de la capa auxData en el mapa
-    Se utiliza el componente BASE_URL para definir la ruta base de la petición al servidor
+    Esta función se encarga de crear un buffer dinámico en el mapa, el cual se actualiza cada vez que se cambia la ubicación del usuario. 
 */
 import React, {useState, useEffect} from "react";
 import { Layer, Source } from "react-map-gl";
