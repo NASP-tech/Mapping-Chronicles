@@ -1,3 +1,7 @@
+/*
+  Este hook se encarga de manejar los cambios en los inputs de los formularios y de guardar los datos de los inputs en un objeto. 
+  Se utiliza el hook useState para guardar los datos de los inputs.
+*/
 import { useCallback, useEffect, useState } from "react";
 
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";

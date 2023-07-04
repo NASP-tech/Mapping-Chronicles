@@ -1,3 +1,6 @@
+/*
+  Este archivo es el punto de entrada de la aplicación. Se encarga de renderizar el componente App.
+*/
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
