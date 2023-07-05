@@ -35,3 +35,86 @@
     
     bleed: 1rem;
 }
+
+.routeController b{
+    color: white;
+    font-size: 0.9rem;
+    list-style: none;
+    margin-bottom: 1vh;
+    margin-top: 1rem;
+    display: block;
+}
+
+.routeController img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-bottom: 1vh;
+    margin-top: 1rem;
+    display: block;
+    color: white;
+}
+.switchContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vh;
+    margin-top: 1rem;
+    color: white;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    border-bottom: 0px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    text-decoration: none;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2196F3;
+    transition: 0.4s;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    text-decoration: none;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+  
+  
+  
+  
+  
+  
+  
