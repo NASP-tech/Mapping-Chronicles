@@ -22,6 +22,9 @@ export default function DynamicPopUp ({coords,  feature, ...props }) {
               <h5>Dirección</h5>
               <p>{feature.properties.Parada_PGO} </p>
               {feature.properties.km &&   <p>Distancia ruta completa: {Math.round(feature.properties.km)} km </p>}
+              <h5>Ruta</h5>
+              <p>{feature.properties.Ruta}</p>
+              <p>{feature.properties.line_name}</p>
             </div>
         </Popup>
     );
