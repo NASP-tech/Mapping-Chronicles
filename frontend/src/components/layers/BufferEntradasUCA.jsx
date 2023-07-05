@@ -24,7 +24,7 @@ export default function BufferEntradasUCALayer({...props}) {
     return(
         data[0]  && 
         <Source id="bufferEntradasUCA" type="geojson" data={data[0] ? data[0] : {} } >
-            <Layer id="bufferEntradasUCA" type="fill" paint={{'fill-color': '#007cbf', 'fill-opacity': 0.5}} {...props}/>
+            <Layer id="bufferEntradasUCA" type="fill" paint={{'fill-color': '#8ad6ff', 'fill-opacity': 0.5}} {...props}/>
         </Source>
         )
     }

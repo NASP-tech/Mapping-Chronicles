@@ -95,9 +95,6 @@ input::placeholder, textarea::placeholder {
 
 }
 
-.layer-controler{
-    text-decoration: none;
-}
 .layer-controler-container b{
     color: white;
     font-size: 12px;
@@ -105,4 +102,95 @@ input::placeholder, textarea::placeholder {
     text-decoration: aqua;
     list-style: none;
     font-weight: 500;
+    
+}
+
+.layer-controler-container .layer-controler{
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    
+}
+.layer-controler-container img {
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    
+    align-items: right;
+}
+
+.App-header {
+    background-color: #040d36;
+    width: 100vw;
+    height: 6vh;
+    align-items: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    font-size: calc(1.2vmin);
+    justify-items: flex-start;
+}
+.App-header .logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    
+}
+.App-header .aboutUs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    
+    margin-left: 1vw;
+    margin-right: 1vw;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    transition: 0.3s;
+    
+
+}
+.App-header .aboutUs:active{
+    background-color: #1b32ff;
+    color: white;
+}
+
+.App-header .aboutUs a{
+    text-decoration: none;
+    padding-inline: 0.5vw;
+    color: white;
+    font-weight: 800;
+    font-size: calc(1.6vmin);
+}
+
+.App-header .aboutUs:hover{
+    background-color: #142052;
+    color: white;
+}
+
+.App-header h1 {
+    color: white;
+    margin-left: 3vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.App-header img{
+    width: 40px;
+    height: 40px;
+    
+    margin-left: 1vw;
+}
+
+.App-header .githubLogo{
+    width: 40px;
+    height: 40px;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    cursor: pointer;
+    transition: 0.3s;
 }

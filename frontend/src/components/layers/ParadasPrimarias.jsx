@@ -17,11 +17,11 @@ export default function ParadasPrimarias({...props}) {
             console.log(err)
         })
     }, [])
-
+    // paint={{'circle-radius': 5, 'circle-color': '#FFA500'}}
     return(
         data[0] &&
         <Source id="paradasPrimarias" type="geojson" data={data[0]} >
-            <Layer  id="paradasPrimarias" type="circle" paint={{'circle-radius': 5, 'circle-color': '#FFA500'}} {...props}/>
+            <Layer  id="paradasPrimarias" type="circle"  paint={{'circle-radius': 5, 'circle-color': '#FFA500'}} {...props}/>
         </Source>
     )
 }

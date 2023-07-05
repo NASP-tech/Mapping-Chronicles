@@ -101,6 +101,7 @@ function App() {
             const { data } = await axios.post(url, body);
             console.log(data);
             Swal("Success", "Pin Created!", "success");
+            window.location.reload()
         } catch (error) {
             console.log(error);
             Swal({
@@ -110,7 +111,6 @@ function App() {
             });
         }
 
-        window.location.reload()
     }
 
     const handleLogout = () => {
@@ -173,34 +173,42 @@ function App() {
         <div className="layer-controler">
           <input type="checkbox" name="rutasPrimarias" checked={layerControler.rutasPrimarias} onChange={handleLayerControler} />
           <b htmlFor="rutasPrimarias">Rutas</b>
+          <img src={require('./assets/Rutas.png')} alt="rutasPrimarias" />
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="paradasPrimarias" checked={layerControler.paradasPrimarias} onChange={handleLayerControler} />
           <b htmlFor="paradasPrimarias">Paradas de Bus</b>
+          <img src={require('./assets/ParadasPrimarias.png')} alt="paradasPrimarias" />
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="entradasUCA" checked={layerControler.entradasUCA} onChange={handleLayerControler} />
           <b htmlFor="entradasUCA">Entradas UCA</b>
+          <img src={require('./assets/Entradas.png')} alt="entradasUCA" />
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="bufferEntradasUCA" checked={layerControler.bufferEntradasUCA} onChange={handleLayerControler} />
           <b htmlFor="bufferEntradasUCA">Radio Entradas UCA</b>
+          <img src={require('./assets/BufferEntradas.png')} alt="bufferEntradasUCA" />
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="dynamicBuffer" checked={layerControler.dynamicBuffer} onChange={handleLayerControler} />
           <b htmlFor="dynamicBuffer">Mi Rango</b>
+          <img src={require('./assets/MiRango.png')} alt="dynamicBuffer" />
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="myBusStops" checked={layerControler.myBusStops} onChange={handleLayerControler} />
           <b htmlFor="myBusStops">Paradas Cercanas</b>
+          <img src={require('./assets/MyBusStop.png')} alt="myBusStops" />
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="direction" checked={layerControler.direction} onChange={handleLayerControler} />
           <b htmlFor="direction">Direction</b>
+          <img src={require('./assets/Direccion.png')} alt="direction" />
         </div>
         <div className="layer-controler">
           <input type="checkbox" name="nearestBusStop" checked={layerControler.nearestBusStop} onChange={handleLayerControler} />
           <b htmlFor="nearestBusStop">Parada más cercana</b>
+          <img src={require('./assets/Nearest.png')} alt="nearestBusStop" />
           </div>
       </div>
 
@@ -212,13 +220,24 @@ function App() {
       <LayerControllerContainer
     
       />
+      <header className="App-header"
+      >
+        <div className="logo">
+        <h1>Mapping Chronicles
+        </h1>
+        <img src={require('./assets/logo.png')} alt="logo"/>
+        </div>
+        <div className="aboutUs">
+          <a href="https://github.com/NASP-tech/Mapping-Chronicles/tree/main"><img className="githubLogo" src={require('./assets/githublogo.png')} alt="github" /></a>
+        </div>
+      </header>
    <ReactMapGL
         initialViewState={{
           longitude: -89.23624,
           latitude: 13.68023,
           zoom: 14
         }}
-        style={{ width: '100vw', height: '100vh' }}
+        style={{ width: '100vw', height: '94vh' }}
         mapStyle="mapbox://styles/mapbox/dark-v10"
         mapboxAccessToken={REACT_APP_MAPBOX_TOKEN}
         onDblClick={handleNewPinClick}
@@ -241,15 +260,15 @@ function App() {
             offsetTop={-visualViewport.zoom * 10} 
             setCoords={setCoords} 
             style={{
-              fontSize: visualViewport.zoom * 9 || 20,
-              color: "red",
+              fontSize: visualViewport.zoom * 9 || 30,
+              color: "#58eb34",
               cursor: "pointer"
             }}/>
 
 
         <RutasPrimarias layout={{visibility : layerControler.rutasPrimarias ? 'visible' : 'none' }}/> 
         <EntradasUCALayer layout={{visibility : layerControler.entradasUCA ? 'visible' : 'none' }} /> 
-        <ParadasPrimarias layout={{visibility : layerControler.paradasPrimarias ? 'visible' : 'none' }}/>
+        <ParadasPrimarias layout={{visibility : layerControler.paradasPrimarias ? 'visible' : 'none'}}/>
         <BufferEntradasUCALayer layout={{visibility : layerControler.bufferEntradasUCA ? 'visible' : 'none' }}/> 
         
         {coords.lat !== 0 && coords.lng !== 0 && (
