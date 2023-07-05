@@ -24,6 +24,7 @@ import Map from "./components/Map";
 import DynamicPopUp from "./components/DynamicPopUp";
 import Direction from "./components/Direction";
 import NearestBustStop from "./components/NearestBusStop";
+import Radius from "./components/Radius";
 // import MapboxDirections from "@mapbox/mapbox-gl-directions/src/directions";
 const REACT_APP_MAPBOX_TOKEN = 'pk.eyJ1IjoibmF0c29scDc3IiwiYSI6ImNsaHF5ejBwYTBkajgzZG1yem02cXI2NW8ifQ.H2s0rN7AbaF2N2kRXWEkxA';
 
@@ -128,7 +129,7 @@ function App() {
   const [ showPopup, setTogglePopup ] = useState(false)
   const [ coordsLayerSelected, setCoordsLayerSelected ] = useState({lat: 0, lng: 0})
   const [ dataFeature, setDataFeature ] = useState({properties:{id:0, nombre:""}})
-  
+  const [ radius, setRadius ] = useState(1000)
 
 
   const handleMapOnClick =  (e) => {
@@ -289,10 +290,10 @@ function App() {
         }
         
         {coords.lat !== 0 && coords.lng !== 0 && (
-          <MyBusStops coords={coords} idPointSelected={showPopup ? dataFeature.properties.id : null} layout={{visibility : layerControler.myBusStops ? 'visible' : 'none' }}/>) }  
-
+          <MyBusStops coords={coords} idPointSelected={showPopup ? dataFeature.properties.id : null} layout={{visibility : layerControler.myBusStops ? 'visible' : 'none' }} radius={radius}/>) }  
+        <Radius radius={radius} setRadius={setRadius}/>
         {coords.lat !== 0 && coords.lng !== 0 && (
-          <DynamicBuffer coords={coords} layout={{visibility : layerControler.dynamicBuffer ? 'visible' : 'none' }} />) }  
+          <DynamicBuffer coords={coords} layout={{visibility : layerControler.dynamicBuffer ? 'visible' : 'none' }} radius={radius}/>) }  
         {coords.lat !== 0 && coords.lng !== 0 && (
           <Direction coords={coords} to={coordsLayerSelected} layout={{visibility : layerControler.direction ? 'visible' : 'none' }} />) } 
 
