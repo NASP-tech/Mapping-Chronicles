@@ -1,3 +1,6 @@
+/*
+    Este componente se encarga de mostrar la parada de bus más cercana al usuario.
+*/
 import React, { useState, useEffect} from "react";
 import { Source, Layer } from "react-map-gl";
 import { BASE_URL } from "../services";

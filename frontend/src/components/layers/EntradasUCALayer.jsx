@@ -1,3 +1,6 @@
+/* 
+    En esta clase se define la capa que muestra las entradas a la UCA en el mapa de la aplicación web 
+*/
 import React, {useEffect, useState} from "react";
 import { Layer, Source } from "react-map-gl";
 import { BASE_URL } from "../../services";

@@ -1,3 +1,6 @@
+/*
+    Este componente se encarga de realizar el login de los usuarios en la aplicación web.
+*/
 import { Cancel, Room } from "@material-ui/icons"
 import "./login.css"
 import { useState } from "react"

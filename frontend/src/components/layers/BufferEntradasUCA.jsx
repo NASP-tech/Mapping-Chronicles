@@ -1,3 +1,7 @@
+/* 
+    En esta clase se define la capa que muestra el buffer de 100 metros de las entradas a la UCA
+*/
+
 import React, {useEffect, useState} from "react";
 import { Layer, Source } from "react-map-gl";
 import { BASE_URL } from "../../services";

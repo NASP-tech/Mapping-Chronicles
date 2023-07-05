@@ -1,3 +1,6 @@
+/*
+    Este componente es el encargado de mostrar el formulario de registro de usuarios. 
+*/
 import { Cancel, Room } from "@material-ui/icons"
 import "./register.css"
 import { useState } from "react"

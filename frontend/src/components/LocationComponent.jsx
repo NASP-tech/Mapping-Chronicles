@@ -1,3 +1,6 @@
+/*
+    Este componente se encarga de obtener la ubicación del usuario y mostrarla en el mapa con un marcador.
+*/
 import React, { useEffect, useState} from "react";
 import { Marker } from "react-map-gl";
 import { Room, Star } from "@material-ui/icons"

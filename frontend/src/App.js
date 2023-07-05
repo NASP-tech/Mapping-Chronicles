@@ -1,3 +1,6 @@
+/*
+  Este archivo es el que se encarga de renderizar la aplicación, es el primer archivo que se ejecuta al iniciar la aplicación. 
+*/
 import { useCallback, useEffect, useState } from "react";
 
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";

@@ -1,3 +1,6 @@
+/*
+    Este hook se encarga de manejar los cambios en los inputs de los formularios y de guardar los datos de los inputs en un objeto.
+*/
 import { useState } from 'react';
 
 export const useForm = ( initialState = {} ) => {

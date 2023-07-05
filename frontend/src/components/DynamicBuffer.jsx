@@ -1,3 +1,6 @@
+/* 
+    Esta función se encarga de crear un buffer dinámico en el mapa, el cual se actualiza cada vez que se cambia la ubicación del usuario. 
+*/
 import React, {useState, useEffect} from "react";
 import { Layer, Source } from "react-map-gl";
 import { BASE_URL } from "../services";

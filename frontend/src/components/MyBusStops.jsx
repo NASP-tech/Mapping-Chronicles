@@ -1,3 +1,6 @@
+/*
+    Este componente se encarga de mostrar las paradas de bus en el mapa.
+*/
 import React, {useState, useEffect} from "react"
 import { Layer, Source } from "react-map-gl";
 import { BASE_URL } from "../services";

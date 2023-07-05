@@ -1,3 +1,6 @@
+/*
+  Este componente se encarga de mostrar el mapa y los marcadores de las paradas de bus cercanas a la ubicación del usuario.
+*/
 import React, {useRef, useEffect, useState} from "react";
 import mapboxgl from "mapbox-gl";
 import './Map.css';

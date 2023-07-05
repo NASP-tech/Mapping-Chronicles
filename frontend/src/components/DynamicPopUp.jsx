@@ -1,3 +1,6 @@
+/*
+    Este componente se encarga de mostrar un popup dinámico en el mapa.
+*/
 import React from "react";
 import { Popup } from "react-map-gl";
 

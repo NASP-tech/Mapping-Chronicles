@@ -1,3 +1,6 @@
+/* 
+    Este componente se encarga de mostrar la ruta de un punto a otro, en el mapa.
+*/
 import React, {useState, useEffect} from "react";
 import { Layer, Source } from "react-map-gl";
 import './Direction.css'

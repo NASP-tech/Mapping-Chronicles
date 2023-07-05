@@ -1,3 +1,6 @@
+/*
+    Este componente se encarga de mostrar las rutas primarias en el mapa.
+*/
 import React, {useEffect, useState} from "react";
 import { Layer, Source } from "react-map-gl";
 import { BASE_URL } from "../../services";
