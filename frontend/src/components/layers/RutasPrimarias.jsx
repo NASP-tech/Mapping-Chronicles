@@ -4,10 +4,10 @@
 import React, {useEffect, useState} from "react";
 import { Layer, Source } from "react-map-gl";
 import { BASE_URL } from "../../services";
-export default function RutasPrimariasLayer({ ...props }) {
+export default function RutasPrimariasLayer({ idRouteSelected, ...props }) {
 
     const [ data, setData ] = useState([])
-
+    const [ id, setId ] = useState(1)
     useEffect(() => {
         fetch(`${BASE_URL}/layers/getRutasPrimarias`)
         .then(res => res.json())
@@ -21,10 +21,29 @@ export default function RutasPrimariasLayer({ ...props }) {
         )
     }, [])
 
+    useEffect(() => {
+        console.log(idRouteSelected)
+        setId(idRouteSelected || 1)
+    },[idRouteSelected])
+
+    // 'paint={{'line-color': '#3bff6f', 'line-width': 1}}
+
     return(
         data[0] &&
         <Source id="rutasPrimarias" type="geojson" data={data[0]} >
-            <Layer id="rutasPrimarias" type="line" paint={{'line-color': '#3bff6f', 'line-width': 1}} {...props} />
+            <Layer id="rutasPrimarias" type="line" 
+                paint={
+                    {'line-color': [
+                        'match',
+                        ['get', 'FID'],
+                        id, 'red',
+                        '#3bff6f',
+                    ], 'line-width': [
+                        'match',
+                        ['get', 'FID'],
+                        id, 6,
+                        2,
+                    ]}}{...props} />
         </Source>
         )
     }

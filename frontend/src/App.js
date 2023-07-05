@@ -270,7 +270,7 @@ function App() {
             }}/>
 
 
-        <RutasPrimarias layout={{visibility : layerControler.rutasPrimarias ? 'visible' : 'none' }}/> 
+        <RutasPrimarias idRouteSelected={showPopup ? dataFeature.properties.FID : null} layout={{visibility : layerControler.rutasPrimarias ? 'visible' : 'none' }}/> 
         <EntradasUCALayer layout={{visibility : layerControler.entradasUCA ? 'visible' : 'none' }} /> 
         <ParadasPrimarias layout={{visibility : layerControler.paradasPrimarias ? 'visible' : 'none'}}/>
         <BufferEntradasUCALayer layout={{visibility : layerControler.bufferEntradasUCA ? 'visible' : 'none' }}/> 
