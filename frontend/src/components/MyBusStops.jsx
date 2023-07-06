@@ -1,4 +1,11 @@
 /*
+  Copyright 2023 Mapping Chronicles
+  Use of this source code is governed by an MIT-style
+  license that can be found in the LICENSE file or at
+  https://opensource.org/licenses/MIT.
+*/
+
+/*
     Este componente se encarga de mostrar las paradas de bus en el mapa.
 */
 import React, {useState, useEffect} from "react"

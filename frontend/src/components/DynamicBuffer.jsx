@@ -1,3 +1,10 @@
+/*
+  Copyright 2023 Mapping Chronicles
+  Use of this source code is governed by an MIT-style
+  license that can be found in the LICENSE file or at
+  https://opensource.org/licenses/MIT.
+*/
+
 /* 
     Esta función se encarga de crear un buffer dinámico en el mapa, el cual se actualiza cada vez que se cambia la ubicación del usuario. 
 */
@@ -9,7 +16,7 @@ export default function DynamicBuffer({coords, radius, ...props}) {
     const [auxData, setAuxData] = useState([])
 
     useEffect(() => {
-        console.log(coords);
+        //console.log(coords);
         fetch(`${BASE_URL}/layers/getMyBuffer/?latitude=${coords.lat}&longitude=${coords.lng}&radius=${radius || 5000}`)
         .then(res => res.json())
         .then(

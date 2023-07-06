@@ -1,4 +1,11 @@
 /*
+  Copyright 2023 Mapping Chronicles
+  Use of this source code is governed by an MIT-style
+  license that can be found in the LICENSE file or at
+  https://opensource.org/licenses/MIT.
+*/
+
+/*
   Este componente se encarga de mostrar el mapa y los marcadores de las paradas de bus cercanas a la ubicación del usuario.
 */
 import React, {useRef, useEffect, useState} from "react";

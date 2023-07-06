@@ -1,4 +1,11 @@
 /*
+  Copyright 2023 Mapping Chronicles
+  Use of this source code is governed by an MIT-style
+  license that can be found in the LICENSE file or at
+  https://opensource.org/licenses/MIT.
+*/
+
+/*
   Este archivo es el que se encarga de renderizar la aplicación, es el primer archivo que se ejecuta al iniciar la aplicación. 
 */
 import { useCallback, useEffect, useState } from "react";

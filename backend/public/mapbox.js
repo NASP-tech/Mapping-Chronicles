@@ -1,3 +1,9 @@
+/*
+  Copyright 2023 Mapping Chronicles
+  Use of this source code is governed by an MIT-style
+  license that can be found in the LICENSE file or at
+  https://opensource.org/licenses/MIT.
+*/
 const token = mapboxgl.accessToken = 'pk.eyJ1IjoiYXVmcmVpc3NlciIsImEiOiJjbGpkbHk5dG4wM2w0M2t0ZWZ1MW1tZGp4In0.OhfEFqr5vOTd5r-RbgpXHA';
 
 // Define a global variable

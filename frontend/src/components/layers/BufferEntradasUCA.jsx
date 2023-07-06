@@ -1,3 +1,10 @@
+/*
+  Copyright 2023 Mapping Chronicles
+  Use of this source code is governed by an MIT-style
+  license that can be found in the LICENSE file or at
+  https://opensource.org/licenses/MIT.
+*/
+
 /* 
     En esta clase se define la capa que muestra el buffer de 100 metros de las entradas a la UCA
 */

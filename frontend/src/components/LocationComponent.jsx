@@ -1,4 +1,11 @@
 /*
+  Copyright 2023 Mapping Chronicles
+  Use of this source code is governed by an MIT-style
+  license that can be found in the LICENSE file or at
+  https://opensource.org/licenses/MIT.
+*/
+
+/*
     Este componente se encarga de obtener la ubicación del usuario y mostrarla en el mapa con un marcador.
 */
 import React, { useEffect, useState} from "react";
@@ -13,7 +20,7 @@ export default function LocationComponent({viewport, setCoords, style, ...props}
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const { latitude, longitude } = position.coords;
-                    console.log(position.coords)
+                    //console.log(position.coords)
                     setLocation({ latitude, longitude });
                     setCoords({lat: latitude, lng: longitude})
                 },
@@ -30,6 +37,10 @@ export default function LocationComponent({viewport, setCoords, style, ...props}
         getLocation()
     }, [])
 
+    // setInterval(() => {
+    //     getLocation()
+    //     }, 10000
+    //     )
     return(
         <>
         <Marker
